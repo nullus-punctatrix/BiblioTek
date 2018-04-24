@@ -12,7 +12,10 @@ public class Scripts : MonoBehaviour {
 	//public GameObject blank_marker;
 	//private Vuforia.ImageTargetBehaviour marker_script;
 	// Use this for initialization
+	public string dataSetName;
+	public GameObject augmentationObject;
 	void Start () {
+		LoadDataSet ();
 //		GameObject[] all_markers = GameObject.Find ("New Game Object");
 
 		//GameObject blank_marker = GameObject.Find ("Blank Marker (0)");
