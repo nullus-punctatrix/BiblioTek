@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Vuforia;
+using TMPro;
+using System.Linq;
 
 public class Scripts : MonoBehaviour {
 	private string lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam laoreet nisl eget tempus gravida. Quisque rhoncus, dui id accumsan viverra, odio nisl congue leo, vitae pharetra arcu leo vitae leo. Maecenas ultrices pulvinar ultricies. In feugiat odio sed nibh pharetra placerat. Suspendisse vestibulum vel purus sed venenatis. Aenean sed ornare nulla, vel elementum erat. Nunc in maximus est. Donec quis tincidunt est, vitae hendrerit est. Vestibulum vitae tellus vitae dui mollis mollis. Fusce commodo vestibulum sem, id hendrerit diam viverra ac.";
@@ -15,17 +17,28 @@ public class Scripts : MonoBehaviour {
 	public string dataSetName;
 	public GameObject augmentationObject;
 	void Start () {
-		Debug.Log ("Hello Start");
+		int counter = 0;
+		GameObject[] all_objects = GameObject.FindGameObjectsWithTag ("Untagged");
+		Debug.Log ("All Objects Length: " + all_objects.Length);
+		
 //		LoadDataSet ();
-//		GameObject[] all_markers = GameObject.Find ("New Game Object");
+//		GameObject[] all_markers = GameObject.Find
+//		for (int i = 0; i < all_markers.Length; i++) {
+//			GameObject marker = all_markers [i];
+//			Transform canvasObj = marker.transform.GetChild (0);
+//			Transform textObj = canvasObj.transform.GetChild (0);
+//			TextMeshPro mText = textObj.GetComponent<TextMeshPro> ();
+//			
+//		}
+		//GameObject blank_marker = GameObject.Find ("Blank Marker (0)");
 
-		GameObject blank_marker = GameObject.Find ("Blank Marker (0)");
+		//Transform canvasObj = blank_marker.transform.GetChild (0);
+		//Transform textObj = canvasObj.transform.GetChild (0);
 
-		Transform canvasObj = blank_marker.transform.GetChild (0);
-		Transform textObj = canvasObj.transform.GetChild (0);
-
-		Text textBox = textObj.GetComponent<Text> ();
-		textBox.text = lorem;
+		//TextMeshPro mText = textObj.GetComponent<TextMeshPro> ();
+		//mText.pageToDisplay = 2;
+		//Text textBox = textObj.GetComponent<Text> ();
+		//textBox.text = lorem;
 		//UnityEngine.UI.Text text = canvas.GetComponent<UnityEngine.UI.Text> ();
 
 		//UnityEngine.UI.Text text_box = blank_marker.GetComponent<GameObject>().GetComponent<UnityEngine.UI.Text>();
