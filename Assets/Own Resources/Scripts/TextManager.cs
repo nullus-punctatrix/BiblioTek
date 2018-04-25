@@ -12,15 +12,22 @@ public class TextManager : MonoBehaviour {
 	private string background;
 	private string textString;
 
-	// Use this for initialization
+    // Use this for initialization
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+        textString = System.IO.File.ReadAllText(@"Assets/Book Shelf/Metamorphosis.txt");
+    }
+
+    // Update is called once per frame
+    void Update () {
+
+    }
+
+    public string GetTextString()
+    {
+
+        return textString;
+    }
 
 	void placeText(Vector3 markerLocation, string textString, float[] textDimension){
 		
