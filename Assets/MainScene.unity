@@ -124,7 +124,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 154754555}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57f0fc3fbb49934999ab22b8cb046aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: {fileID: 1951380177386608, guid: 87c8edb37f67bdf4e873decc79ad3340, type: 2}
+  canvas: {fileID: 224400904483625060, guid: eb10de074287a114186d45b9be293fa0, type: 2}
 --- !u!21 &572695358
 Material:
   serializedVersion: 6
@@ -413,7 +413,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 836422645}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

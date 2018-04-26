@@ -11,8 +11,8 @@ public class BiblioTekMainScript : MonoBehaviour {
 	private UnityEngine.UI.Image coverImage;
 	private string[] cachedPages;
 	private int bookmark;
-	public GameObject test;
 	private bool LoadTargetsFlag = true;
+	public Transform canvas;
 
 	// Use this for initialization
 	void Start () {
@@ -35,15 +35,24 @@ public class BiblioTekMainScript : MonoBehaviour {
 		TrackableBehaviour[] tbs = TrackerManager.Instance.GetStateManager ().GetTrackableBehaviours ().ToArray ();
 		int count = tbs.Length;
 		for (int i = 0; i < tbs.Length; i++) {
-			tbs [i].name = "Marker_" + i;
+			tbs [i].name = "Marker_" + count;
+			tbs [i].tag = "Marker";
 			tbs [i].gameObject.AddComponent<DefaultTrackableEventHandler> ();
 			tbs [i].gameObject.AddComponent<TurnOffBehaviour> ();
-			GameObject augmentation = (GameObject)GameObject.Instantiate(test);
-			augmentation.transform.parent = tbs[i].gameObject.transform;
-			augmentation.transform.localPosition = new Vector3(0f, 0f, 0f);
-			augmentation.transform.localRotation = Quaternion.identity;
-			//augmentation.transform.localScale = new Vector3(0.005f, 0.005f, 0.005f);
-			augmentation.gameObject.SetActive(true);
+			Transform canvasOb = (Transform)Transform.Instantiate (canvas);
+			Transform textBox = canvasOb.GetChild (0);
+			textBox.GetComponent<TextMeshPro> ().pageToDisplay = count--;
+			canvasOb.transform.parent = tbs [i].gameObject.transform;
+			canvasOb.transform.localPosition = new Vector3(-0.2f, 0f, -0.4f);
+			canvasOb.transform.localRotation = Quaternion.identity;
+			canvasOb.transform.localScale = new Vector3 (0.0005f, 0.0005f, 0.0005f);
+			canvasOb.transform.Rotate (new Vector3 (90, 0, 0));
+			canvasOb.gameObject.SetActive(true);
+//			GameObject augmentation = (GameObject)GameObject.Instantiate(test);
+//			augmentation.transform.parent = tbs[i].gameObject.transform;
+//			augmentation.transform.localPosition = new Vector3(0f, 0f, 0f);
+//			augmentation.transform.localRotation = Quaternion.identity;
+//			augmentation.gameObject.SetActive(true);
 		}
 	}
 }

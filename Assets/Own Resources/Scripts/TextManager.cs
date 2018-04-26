@@ -29,8 +29,7 @@ public class TextManager : MonoBehaviour {
         return textString;
     }
 
-	void placeText(Vector3 markerLocation, string textString, float[] textDimension){
-		
+	void placeText(string textString){
 	}
 
 	UnityEngine.UI.Text createText(string fontType, string fontSize, string fontColor, string background, string textString){
