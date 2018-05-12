@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="deneme20" size="1.000000 1.666667" />
+    <ImageTarget name="deneme19" size="1.000000 1.666667" />
+    <ImageTarget name="deneme18" size="1.000000 1.666667" />
+    <ImageTarget name="deneme17" size="1.000000 1.666667" />
+    <ImageTarget name="deneme16" size="1.000000 1.666667" />
+    <ImageTarget name="deneme15" size="1.000000 1.666667" />
+    <ImageTarget name="deneme14" size="1.000000 1.666667" />
+    <ImageTarget name="deneme13" size="1.000000 1.666667" />
+    <ImageTarget name="deneme12" size="1.000000 1.666667" />
+    <ImageTarget name="deneme11" size="1.000000 1.666667" />
+    <ImageTarget name="deneme10" size="1.000000 1.666667" />
+    <ImageTarget name="deneme9" size="1.000000 1.666667" />
+    <ImageTarget name="deneme8" size="1.000000 1.666667" />
+    <ImageTarget name="deneme7" size="1.000000 1.666667" />
+    <ImageTarget name="deneme6" size="1.000000 1.666667" />
+    <ImageTarget name="deneme5" size="1.000000 1.666667" />
+    <ImageTarget name="deneme4" size="1.000000 1.666667" />
+    <ImageTarget name="deneme3" size="1.000000 1.666667" />
+    <ImageTarget name="deneme2" size="1.000000 1.666667" />
+    <ImageTarget name="deneme1" size="1.000000 1.666667" />
+  </Tracking>
+</QCARConfig>

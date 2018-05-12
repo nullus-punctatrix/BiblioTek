@@ -42,6 +42,7 @@ public class BiblioTekMainScript : MonoBehaviour {
 			Transform canvasOb = (Transform)Transform.Instantiate (canvas);
 			Transform textBox = canvasOb.GetChild (0);
 			textBox.GetComponent<TextMeshPro> ().pageToDisplay = count--;
+			textBox.GetComponent<TextMeshPro> ().isTextTruncated;
 			canvasOb.transform.parent = tbs [i].gameObject.transform;
 			canvasOb.transform.localPosition = new Vector3(-0.2f, 0f, -0.4f);
 			canvasOb.transform.localRotation = Quaternion.identity;

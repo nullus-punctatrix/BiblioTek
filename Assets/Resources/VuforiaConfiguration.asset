@@ -24,7 +24,7 @@ MonoBehaviour:
   digitalEyewear:
     cameraOffset: 0.06
     distortionRenderingLayer: 31
-    eyewearType: 2
+    eyewearType: 0
     stereoFramework: 0
     seeThroughConfiguration: 0
     viewerName: Generic Cardboard
@@ -44,9 +44,9 @@ MonoBehaviour:
       ContainsMagnet: 0
   databaseLoad:
     dataSetsToLoad:
-    - bibliotek_marker_database
+    - matlabDenemeleri
     dataSetsToActivate:
-    - bibliotek_marker_database
+    - matlabDenemeleri
   videoBackground:
     clippingMode: 0
     numDivisions: 2
