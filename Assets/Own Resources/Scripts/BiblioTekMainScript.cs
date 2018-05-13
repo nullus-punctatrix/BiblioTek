@@ -35,6 +35,7 @@ public class BiblioTekMainScript : MonoBehaviour {
 		TrackableBehaviour[] tbs = TrackerManager.Instance.GetStateManager ().GetTrackableBehaviours ().ToArray ();
 		int count = tbs.Length;
 		for (int i = 0; i < tbs.Length; i++) {
+			Debug.Log (tbs[i]);
 			tbs [i].name = "Marker_" + count;
 			tbs [i].tag = "Marker";
 			tbs [i].gameObject.AddComponent<DefaultTrackableEventHandler> ();
@@ -43,7 +44,8 @@ public class BiblioTekMainScript : MonoBehaviour {
 			Transform textBox = canvasOb.GetChild (0);
 			textBox.GetComponent<TextMeshPro> ().pageToDisplay = count--;
 			//textBox.GetComponent<TextMeshPro> ().isTextTruncated;
-			canvasOb.transform.parent = tbs [i].gameObject.transform;
+			canvasOb.transform.SetParent(tbs[i].gameObject.transform); 
+			//canvasOb.transform.parent = tbs [i].gameObject.transform;
 			canvasOb.transform.localPosition = new Vector3(-0.2f, 0f, -0.4f);
 			canvasOb.transform.localRotation = Quaternion.identity;
 			canvasOb.transform.localScale = new Vector3 (0.0005f, 0.0005f, 0.0005f);

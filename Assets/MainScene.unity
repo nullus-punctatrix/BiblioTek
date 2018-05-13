@@ -331,6 +331,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 224400904483625060, guid: eb10de074287a114186d45b9be293fa0, type: 2}
+--- !u!114 &253620718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 253620715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c58751ef62fc4b8449e7587d624b51ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &253620719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 253620715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99efb0392a9fcd44f82915dc198f1aef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ebc: {fileID: 0}
 --- !u!21 &572695358
 Material:
   serializedVersion: 6

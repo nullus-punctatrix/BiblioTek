@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="deneme20" size="1.000000 1.666667" />
-    <ImageTarget name="deneme19" size="1.000000 1.666667" />
-    <ImageTarget name="deneme18" size="1.000000 1.666667" />
-    <ImageTarget name="deneme17" size="1.000000 1.666667" />
-    <ImageTarget name="deneme16" size="1.000000 1.666667" />
-    <ImageTarget name="deneme15" size="1.000000 1.666667" />
-    <ImageTarget name="deneme14" size="1.000000 1.666667" />
-    <ImageTarget name="deneme13" size="1.000000 1.666667" />
-    <ImageTarget name="deneme12" size="1.000000 1.666667" />
-    <ImageTarget name="deneme11" size="1.000000 1.666667" />
-    <ImageTarget name="deneme10" size="1.000000 1.666667" />
-    <ImageTarget name="deneme9" size="1.000000 1.666667" />
-    <ImageTarget name="deneme8" size="1.000000 1.666667" />
-    <ImageTarget name="deneme7" size="1.000000 1.666667" />
-    <ImageTarget name="deneme6" size="1.000000 1.666667" />
-    <ImageTarget name="deneme5" size="1.000000 1.666667" />
-    <ImageTarget name="deneme4" size="1.000000 1.666667" />
-    <ImageTarget name="deneme3" size="1.000000 1.666667" />
-    <ImageTarget name="deneme2" size="1.000000 1.666667" />
-    <ImageTarget name="deneme1" size="1.000000 1.666667" />
+    <ImageTarget name="onurunDeneme20" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme19" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme16" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme17" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme15" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme14" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme13" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme12" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme11" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme10" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme9" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme8" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme18" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme7" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme6" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme5" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme4" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme3" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme2" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme1" size="1.000000 1.444444" />
   </Tracking>
 </QCARConfig>

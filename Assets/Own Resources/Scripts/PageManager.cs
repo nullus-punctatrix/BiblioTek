@@ -5,6 +5,8 @@ using UnityEngine;
 public class PageManager : MonoBehaviour {
 
 	private string[] pageArray;
+	public eBookConverter ebc;
+	private int maxChar = 2;
 
 	// Use this for initialization
 	void Start () {
@@ -15,15 +17,21 @@ public class PageManager : MonoBehaviour {
 	void Update () {
 		
 	}
+		
+	void recieveFullText(string fullText){
+		processPage (fullText, this.maxChar);
+	}
 
 	void readPage(int number){
 		string page = "";
 		// Read Page with given number..
-		processPage(page);
 	}
-	void processPage(string str){
-		
+	void processPage(string str, int maxChar){
+		pageArray = new string[str.Length / maxChar + 1];
+		Debug.Log ("String Lenght: " + str.Length);
+		Debug.Log ("Substring: " + str.Substring(0, maxChar));
 	}
+
 	string getPage(int number){
 		if (number <= pageArray.Length) {
 			return pageArray [number];

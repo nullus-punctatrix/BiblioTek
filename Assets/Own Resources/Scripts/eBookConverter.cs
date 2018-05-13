@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class eBookConverter : MonoBehaviour {
+public class eBookConverter : MonoBehaviour{
 	
 	private string eBookPath;
 	private string convertedPath;
+	private string fullText;
 
 	// Use this for initialization
 	void Start () {
-		
+		sendFullText ("TEST");
 	}
 	
 	// Update is called once per frame
@@ -32,4 +33,13 @@ public class eBookConverter : MonoBehaviour {
 	void setConvertedPath(string path){
 		convertedPath = path;
 	}
+
+	void sendFullText(string str){
+		SendMessage ("recieveFullText", str);
+	}
+
+	void setFullText(string fullText){
+		this.fullText = fullText;
+	}
+		
 }
