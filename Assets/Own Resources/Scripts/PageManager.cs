@@ -29,15 +29,14 @@ public class PageManager : MonoBehaviour {
 	void processPage(string str, int maxChar){
 		int totalPages = str.Length / maxChar;
 		pageArray = new string[totalPages];
-		int sl = str.Length;
-		Debug.Log ("pageArray Length: " + pageArray.Length);
 		for (int i = 0; i < totalPages; i++) {
+			if (str [maxChar].Equals(" ")) {
+				
+			} else {
+				
+			}
 			pageArray [i] = str.Substring (0, maxChar);
-			Debug.Log (pageArray [i]);
-			Debug.Log(maxChar + " maxchar, " + sl + "")
-			str = str.Substring (maxChar, sl);
-			sl = str.Length;
-			Debug.Log ("Remaining string after " + i + "th substring: " + str);
+			str = str.Substring (maxChar, str.Length - maxChar);
 		}
 	}
 

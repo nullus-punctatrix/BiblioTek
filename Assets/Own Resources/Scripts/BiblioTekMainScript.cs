@@ -24,6 +24,18 @@ public class BiblioTekMainScript : MonoBehaviour {
 		if (LoadTargetsFlag) {
 			LoadTargets ();
 			LoadTargetsFlag = !LoadTargetsFlag;
+		} else {
+			TrackableBehaviour[] tbs = TrackerManager.Instance.GetStateManager ().GetActiveTrackableBehaviours ().ToArray ();
+			if (tbs.Length > 0) {
+				TextMeshPro tmpo = null;
+				for (int i = 0; i < tbs.Length; i++) {
+					//GameObject.Find (tbs [i].name).GetComponent ("Canvas(Clone)").gameObject.transform.GetComponent("Text");
+					//tmpo = tbs [i].gameObject.GetComponent ("Canvas(Clone)").gameObject.GetComponent ("Text").gameObject.GetComponent<TextMeshPro> ();
+					if(tmpo != null){
+						Debug.Log (tmpo.text);
+					}
+				}
+			}
 		}
 	}
 
@@ -35,7 +47,6 @@ public class BiblioTekMainScript : MonoBehaviour {
 		TrackableBehaviour[] tbs = TrackerManager.Instance.GetStateManager ().GetTrackableBehaviours ().ToArray ();
 		int count = tbs.Length;
 		for (int i = 0; i < tbs.Length; i++) {
-			Debug.Log (tbs[i]);
 			tbs [i].name = "Marker_" + count;
 			tbs [i].tag = "Marker";
 			tbs [i].gameObject.AddComponent<DefaultTrackableEventHandler> ();
@@ -43,6 +54,7 @@ public class BiblioTekMainScript : MonoBehaviour {
 			Transform canvasOb = (Transform)Transform.Instantiate (canvas);
 			Transform textBox = canvasOb.GetChild (0);
 			textBox.GetComponent<TextMeshPro> ().pageToDisplay = count--;
+			textBox.GetComponent<TextMeshPro> ().alignment = TextAlignmentOptions.TopJustified;
 			//textBox.GetComponent<TextMeshPro> ().isTextTruncated;
 			canvasOb.transform.SetParent(tbs[i].gameObject.transform); 
 			//canvasOb.transform.parent = tbs [i].gameObject.transform;
