@@ -1,48 +1,39 @@
-﻿//using UnityEngine;
-//using UnityEngine.UI;
-//using System.Collections;
-//using TMPro;
-//public class FadeInOutManager : MonoBehaviour {
-//
-//    //GameObject textField;
-//
-//
-//	void Start(){
-//		
-//	}
-//    
-//
-//    void Update()
-//    {
-//		if (gameObject.activeInHierarchy)
-//        {
-//			StartCoroutine(FadeTextToFullAlpha(1f, (Text)gameObject.GetComponentInChildren<TextMeshPro>()));
-//        }
-//		if (!gameObject.activeInHierarchy)
-//        {
-//			StartCoroutine(FadeTextToZeroAlpha(1f, (Text)gameObject.GetComponentInChildren<TextMeshPro>()));
-//        }
-//    }
-//
-//
-//
-//    public IEnumerator FadeTextToFullAlpha(float t, Text i)
-//    {
-//        i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
-//        while (i.color.a < 1.0f)
-//        {
-//            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
-//            yield return null;
-//        }
-//    }
-//
-//    public IEnumerator FadeTextToZeroAlpha(float t, Text i)
-//    {
-//        i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
-//        while (i.color.a > 0.0f)
-//        {
-//            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
-//            yield return null;
-//        }
-//    }
-//}
+
+﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+using TMPro;
+
+public class FadeInOutManager : MonoBehaviour {
+
+    private TextMeshPro m_textMeshPro;
+    
+    IEnumerator Start()
+    {
+        m_textMeshPro = gameObject.GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>();
+
+
+        int totalVisibleCharacters = m_textMeshPro.textInfo.characterCount;
+        int counter = 0;
+
+        while (true)
+        {
+            int visibleCount = counter % (totalVisibleCharacters + 1);
+
+            m_textMeshPro.maxVisibleCharacters = visibleCount;
+            //m_textMeshPro.maxVisibleLines = MaxLines;
+
+            if (visibleCount >= totalVisibleCharacters)
+            {
+                yield return new WaitForSeconds(1.0f);
+                //return;
+            }
+
+            counter += 1;
+
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+
+}
+
