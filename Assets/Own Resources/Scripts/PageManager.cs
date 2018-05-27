@@ -28,16 +28,27 @@ public class PageManager : MonoBehaviour {
 	}
 	void processPage(string str, int maxChar){
 		int totalPages = str.Length / maxChar;
-		pageArray = new string[totalPages];
+		pageArray = new string[totalPages+1];
 		for (int i = 0; i < totalPages; i++) {
-			if (str [maxChar].Equals(" ")) {
-				
+			if (str.Length >= maxChar) {
+				pageArray [i] = str.Substring (0, maxChar);
+
+				if (str.Length != maxChar) {
+					if (str [maxChar].Equals (" ")) {
+					
+					} else {
+						pageArray [i] = pageArray [i] + "-";
+					}
+				} else {
+					// DO NOTHING
+				}
+				str = str.Substring (maxChar, str.Length - maxChar);
 			} else {
-				
+				// ADD REMAINING
 			}
-			pageArray [i] = str.Substring (0, maxChar);
-			str = str.Substring (maxChar, str.Length - maxChar);
+			Debug.Log (pageArray[i]);
 		}
+	
 	}
 
 	string getPage(int number){
