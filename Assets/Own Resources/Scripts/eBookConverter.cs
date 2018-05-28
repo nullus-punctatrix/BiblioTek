@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class eBookConverter : MonoBehaviour{
 	
-	private string eBookPath;
-	private string convertedPath;
-	private string fullText;
+//	private string eBookPath;
+//	private string convertedPath;
+//	private string fullText;
 
 	// Use this for initialization
 	void Start () {
-		sendFullText ("TEST");
+		sendFullText ("TESTA SKLJGAKLSJGj jasklg jasklgjasklgj sagasgkljasgkljasklg asklgjasklgjaklsgjlkasgjklasgjlkasjgkl");
 	}
 	
 	// Update is called once per frame
@@ -27,11 +27,11 @@ public class eBookConverter : MonoBehaviour{
 	}
 
 	void setBookPath(string path){
-		eBookPath = path;
+		//eBookPath = path;
 	}
 
 	void setConvertedPath(string path){
-		convertedPath = path;
+		//convertedPath = path;
 	}
 
 	void sendFullText(string str){
@@ -39,7 +39,7 @@ public class eBookConverter : MonoBehaviour{
 	}
 
 	void setFullText(string fullText){
-		this.fullText = fullText;
+		//this.fullText = fullText;
 	}
 		
 }

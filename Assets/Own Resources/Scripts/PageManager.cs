@@ -6,7 +6,7 @@ public class PageManager : MonoBehaviour {
 
 	private string[] pageArray;
 	public eBookConverter ebc;
-	private int maxChar = 2;
+	private int maxChar = 500;
 
 	// Use this for initialization
 	void Start () {
@@ -23,7 +23,7 @@ public class PageManager : MonoBehaviour {
 	}
 
 	void readPage(int number){
-		string page = "";
+		
 		// Read Page with given number..
 	}
 	void processPage(string str, int maxChar){
@@ -34,21 +34,24 @@ public class PageManager : MonoBehaviour {
 				pageArray [i] = str.Substring (0, maxChar);
 
 				if (str.Length != maxChar) {
-					if (str [maxChar].Equals (" ")) {
-					
+					if (str [maxChar] == ' ') {
+						str = str.Substring (1, str.Length-1);
 					} else {
-						pageArray [i] = pageArray [i] + "-";
+						if (pageArray [i] [maxChar-1] != ' ') {
+							pageArray [i] = pageArray [i] + "-";
+						}
 					}
 				} else {
 					// DO NOTHING
 				}
 				str = str.Substring (maxChar, str.Length - maxChar);
 			} else {
-				// ADD REMAINING
+				pageArray [i] = str;
+				break;
 			}
-			Debug.Log (pageArray[i]);
+
 		}
-	
+		SendMessage ("recievePages", pageArray);
 	}
 
 	string getPage(int number){

@@ -7,7 +7,7 @@ using TMPro;
 using System.Linq;
 
 public class Scripts : MonoBehaviour {
-	private string lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam laoreet nisl eget tempus gravida. Quisque rhoncus, dui id accumsan viverra, odio nisl congue leo, vitae pharetra arcu leo vitae leo. Maecenas ultrices pulvinar ultricies. In feugiat odio sed nibh pharetra placerat. Suspendisse vestibulum vel purus sed venenatis. Aenean sed ornare nulla, vel elementum erat. Nunc in maximus est. Donec quis tincidunt est, vitae hendrerit est. Vestibulum vitae tellus vitae dui mollis mollis. Fusce commodo vestibulum sem, id hendrerit diam viverra ac.";
+	//private string lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam laoreet nisl eget tempus gravida. Quisque rhoncus, dui id accumsan viverra, odio nisl congue leo, vitae pharetra arcu leo vitae leo. Maecenas ultrices pulvinar ultricies. In feugiat odio sed nibh pharetra placerat. Suspendisse vestibulum vel purus sed venenatis. Aenean sed ornare nulla, vel elementum erat. Nunc in maximus est. Donec quis tincidunt est, vitae hendrerit est. Vestibulum vitae tellus vitae dui mollis mollis. Fusce commodo vestibulum sem, id hendrerit diam viverra ac.";
 //	static private int n = 5; // Number of Markers on the Scene
 //	private GameObject[] blank_markers = new GameObject[n];
 //	public GameObject augmentationObject = null;
@@ -17,7 +17,7 @@ public class Scripts : MonoBehaviour {
 	public string dataSetName;
 	public GameObject augmentationObject;
 	void Start () {
-		int counter = 0;
+		//int counter = 0;
 		GameObject[] all_objects = GameObject.FindGameObjectsWithTag ("Untagged");
 		Debug.Log ("All Objects Length: " + all_objects.Length);
 		

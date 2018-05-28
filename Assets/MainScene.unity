@@ -330,7 +330,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57f0fc3fbb49934999ab22b8cb046aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 224400904483625060, guid: eb10de074287a114186d45b9be293fa0, type: 2}
+  canvas: {fileID: 224007604176441266, guid: 6d36f1a38c5c20542a38f9b17b9d30c3, type: 2}
+  textPrefab: {fileID: 224800131291529210, guid: ef9688f534ead7e49b36de0f5e5998be,
+    type: 2}
 --- !u!114 &253620718
 MonoBehaviour:
   m_ObjectHideFlags: 0
