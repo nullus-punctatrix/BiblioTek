@@ -27,12 +27,11 @@ public class PageManager : MonoBehaviour {
 		// Read Page with given number..
 	}
 	void processPage(string str, int maxChar){
-		int totalPages = str.Length / maxChar;
-		pageArray = new string[totalPages+1];
+		int totalPages = (str.Length / maxChar) + 1;
+		pageArray = new string[totalPages];
 		for (int i = 0; i < totalPages; i++) {
 			if (str.Length >= maxChar) {
 				pageArray [i] = str.Substring (0, maxChar);
-
 				if (str.Length != maxChar) {
 					if (str [maxChar] == ' ') {
 						str = str.Substring (1, str.Length-1);
@@ -47,9 +46,8 @@ public class PageManager : MonoBehaviour {
 				str = str.Substring (maxChar, str.Length - maxChar);
 			} else {
 				pageArray [i] = str;
-				break;
+				str = "";
 			}
-
 		}
 		SendMessage ("recievePages", pageArray);
 	}

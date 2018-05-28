@@ -15,18 +15,23 @@ public class BiblioTekMainScript : MonoBehaviour {
 	private bool pagesRecieved = false;
 	public Transform canvas;
 	public Transform textPrefab;
+	private int segmentPointer = 0;
+	private bool segmentChanged = false;
+	private bool initialized = false;
 
-	// Use this for initialization
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		if (LoadTargetsFlag & pagesRecieved) {
 			LoadTargets ();
 			LoadTargetsFlag = !LoadTargetsFlag;
-		} 
+		}
+		else if (segmentChanged){
+			LoadSegment (segmentPointer);
+			segmentChanged = false;
+		}
 		else {
 			TrackableBehaviour[] tbs = TrackerManager.Instance.GetStateManager ().GetActiveTrackableBehaviours ().ToArray ();
 			if (tbs.Length > 0) {
@@ -35,7 +40,7 @@ public class BiblioTekMainScript : MonoBehaviour {
 					//GameObject.Find (tbs [i].name).GetComponent ("Canvas(Clone)").gameObject.transform.GetComponent("Text");
 					//tmpo = tbs [i].gameObject.GetComponent ("Canvas(Clone)").gameObject.GetComponent ("Text").gameObject.GetComponent<TextMeshPro> ();
 					if(tmpo != null){
-						Debug.Log (tmpo.text);
+						//Debug.Log (tmpo.text);
 					}
 				}
 			}
@@ -49,13 +54,14 @@ public class BiblioTekMainScript : MonoBehaviour {
 	void recievePages(string[] pages){
 		cachedPages = pages;
 		for (int i = 0; i < cachedPages.Length; i++) {
-			Debug.Log (cachedPages.Length);
+			Debug.Log (cachedPages[i]);
 		}
 		pagesRecieved = true;
 	}
 
 	void LoadTargets(){
 		TrackableBehaviour[] tbs = TrackerManager.Instance.GetStateManager ().GetTrackableBehaviours ().ToArray ();
+		int maxSegment = (cachedPages.Length / tbs.Length) + 1;
 		int count = 1;
 		for (int i = 0; i < tbs.Length; i++) {
 			tbs [i].name = "Marker_" + count++;
@@ -63,16 +69,14 @@ public class BiblioTekMainScript : MonoBehaviour {
 			tbs [i].gameObject.AddComponent<DefaultTrackableEventHandler> ();
 			tbs [i].gameObject.AddComponent<TurnOffBehaviour> ();
 			Transform canvasOb = (Transform)Transform.Instantiate (canvas);
-
 			Transform textBox = (Transform)Transform.Instantiate (textPrefab);
 			textBox.transform.SetParent (canvasOb);
 
-			if (i < cachedPages.Length) {
-				textBox.GetComponent<TextMeshPro> ().text = cachedPages [i];
-			}
-			textBox.GetComponent<TextMeshPro> ().text = "LOL" + count;
-			textBox.GetComponent<TextMeshPro> ().alignment = TextAlignmentOptions.TopJustified;
+//			if (i + (tbs.Length * segmentPointer) < cachedPages.Length) {
+//				textBox.GetComponent<TextMeshPro> ().text = cachedPages [i + (tbs.Length * segmentPointer)];
+//			}
 
+			textBox.GetComponent<TextMeshPro> ().alignment = TextAlignmentOptions.TopJustified;
 
 			canvasOb.transform.SetParent(tbs[i].gameObject.transform); 
 			canvasOb.transform.localPosition = new Vector3(-0.2f, 0f, -0.4f);
@@ -80,16 +84,20 @@ public class BiblioTekMainScript : MonoBehaviour {
 			canvasOb.transform.localScale = new Vector3 (0.0005f, 0.0005f, 0.0005f);
 			canvasOb.transform.Rotate (new Vector3 (90, 0, 0));
 			canvasOb.gameObject.SetActive(true);
+		}
+		LoadSegment (0);
+		LoadSegment (1);
+		LoadSegment (0);
+	}
 
-			//Transform textBox = canvasOb.GetChild (0);
-			//textBox.GetComponent<TextMeshPro> ().isTextTruncated;
-			//canvasOb.transform.parent = tbs [i].gameObject.transform;
-			//textBox.GetComponent<TextMeshPro> ().pageToDisplay = count--;
-//			GameObject augmentation = (GameObject)GameObject.Instantiate(test);
-//			augmentation.transform.parent = tbs[i].gameObject.transform;
-//			augmentation.transform.localPosition = new Vector3(0f, 0f, 0f);
-//			augmentation.transform.localRotation = Quaternion.identity;
-//			augmentation.gameObject.SetActive(true);
+	void LoadSegment(int segment){
+		GameObject[] objArr = GameObject.FindGameObjectsWithTag ("Marker");
+		for (int i = 0; i < objArr.Length; i++) {
+			string page = "";
+			if (i + (segment * objArr.Length) < cachedPages.Length) {
+				page = cachedPages [i + (segment * objArr.Length)];
+			}
+			objArr [i].transform.Find ("Canvas Prefab(Clone)").transform.Find ("textPrefab(Clone)").GetComponent<TextMeshPro> ().text = page;
 		}
 	}
 }

@@ -19,7 +19,7 @@ public class Scripts : MonoBehaviour {
 	void Start () {
 		//int counter = 0;
 		GameObject[] all_objects = GameObject.FindGameObjectsWithTag ("Untagged");
-		Debug.Log ("All Objects Length: " + all_objects.Length);
+		//Debug.Log ("All Objects Length: " + all_objects.Length);
 		
 //		LoadDataSet ();
 //		GameObject[] all_markers = GameObject.Find
