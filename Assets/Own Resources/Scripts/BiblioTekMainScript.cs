@@ -77,16 +77,20 @@ public class BiblioTekMainScript : MonoBehaviour {
 //			}
 
 			textBox.GetComponent<TextMeshPro> ().alignment = TextAlignmentOptions.TopJustified;
+			//textBox.GetComponent<TextMeshPro> ().autoSizeTextContainer = true;
+			//textBox.GetComponent<TextMeshPro> ().fontSizeMin = 100;
+			//textBox.GetComponent<TextMeshPro> ().fontSizeMax = 9999;
 
 			canvasOb.transform.SetParent(tbs[i].gameObject.transform); 
 			canvasOb.transform.localPosition = new Vector3(-0.2f, 0f, -0.4f);
+
+			//textBox.right = 0;
+
 			canvasOb.transform.localRotation = Quaternion.identity;
 			canvasOb.transform.localScale = new Vector3 (0.0005f, 0.0005f, 0.0005f);
 			canvasOb.transform.Rotate (new Vector3 (90, 0, 0));
 			canvasOb.gameObject.SetActive(true);
 		}
-		LoadSegment (0);
-		LoadSegment (1);
 		LoadSegment (0);
 	}
 
