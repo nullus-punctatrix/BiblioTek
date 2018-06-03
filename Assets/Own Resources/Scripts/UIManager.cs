@@ -254,7 +254,7 @@ public class UIManager : MonoBehaviour {
 
             if (totalPartitionNumber != 0)
             {
-                Debug.Log("ICINE GIRMEDI");
+                Debug.Log("ICINE GIRDI");
                 changePartitionButton.GetComponentInChildren<Text>().text = "Partition Number: " + currentPartitionNumber;
 
                 SendMessage("receiveCurrentSegment", currentPartitionNumber);
