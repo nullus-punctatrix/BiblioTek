@@ -18,8 +18,11 @@ public class BiblioTekMainScript : MonoBehaviour {
 	private int segmentPointer = 0;
 	private bool segmentChanged = false;
 	private bool initialized = false;
+    private bool colorChanged = true;
 
-	void Start () {
+    private Color32 textColor = new Color32(50, 50, 50, 255);
+
+    void Start () {
 		
 	}
 
@@ -52,7 +55,34 @@ public class BiblioTekMainScript : MonoBehaviour {
 		
 	}
 
-	void recievePages(string[] pages){
+    void changeTextColor(string color)
+    {
+
+        if (color.Equals("Red")){
+
+            textColor = new Color32(255, 0, 0, 255);
+            Debug.Log("Color Changed");
+        }
+        else if (color.Equals("Green"))
+        {
+            textColor = new Color32(0, 255, 0, 255);
+            Debug.Log("Color Changed");
+        }
+        else if (color.Equals("Blue"))
+        {
+            textColor = new Color32(0, 0, 255, 255);
+            Debug.Log("Color Changed");
+        }
+        else
+        {
+            Debug.Log("No Color Found");
+        }
+
+        LoadTargetsFlag = true;
+
+    }
+
+    void recievePages(string[] pages){
 		cachedPages = pages;
 		for (int i = 0; i < cachedPages.Length; i++) {
 			Debug.Log (cachedPages[i]);
@@ -79,11 +109,13 @@ public class BiblioTekMainScript : MonoBehaviour {
 			textBox.transform.SetParent (canvasOb);
 			textBox.GetComponent<RectTransform> ().sizeDelta = new Vector2 (0, 0);
 
-//			if (i + (tbs.Length * segmentPointer) < cachedPages.Length) {
-//				textBox.GetComponent<TextMeshPro> ().text = cachedPages [i + (tbs.Length * segmentPointer)];
-//			}
+            //			if (i + (tbs.Length * segmentPointer) < cachedPages.Length) {
+            //				textBox.GetComponent<TextMeshPro> ().text = cachedPages [i + (tbs.Length * segmentPointer)];
+            //			}
 
-			textBox.GetComponent<TextMeshPro> ().alignment = TextAlignmentOptions.TopJustified;
+            textBox.GetComponent<TextMeshPro>().color = textColor;
+
+            textBox.GetComponent<TextMeshPro> ().alignment = TextAlignmentOptions.TopJustified;
 			//textBox.GetComponent<TextMeshPro> ().autoSizeTextContainer = true;
 			//textBox.GetComponent<TextMeshPro> ().fontSizeMin = 100;
 			//textBox.GetComponent<TextMeshPro> ().fontSizeMax = 9999;
