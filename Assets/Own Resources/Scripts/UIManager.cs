@@ -28,21 +28,61 @@ public class UIManager : MonoBehaviour {
         Debug.Log(partitionSelectionCanvas);
 
         settingsButton = GameObject.Find("Settings").GetComponent<Button>();
-        settingsButton.onClick.AddListener(ListenUI);
+        settingsButton.onClick.AddListener(delegate { ListenUI("settings"); });
+
 
         exitButton = GameObject.Find("Exit").GetComponent<Button>();
-        exitButton.onClick.AddListener(ListenUI);
+        exitButton.onClick.AddListener(delegate { ListenUI("exit"); });
 
-        ListenUI();
+
+        settingsCanvas.SetActive(false);
+        bookSelectionCanvas.SetActive(false);
+        partitionSelectionCanvas.SetActive(false);
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
-	void ListenUI(){
+	void ListenUI(string buttonName){
 
         Debug.Log("Basildi");
+
+        if (buttonName.Equals("settings"))
+        {
+            Debug.Log("Settings Buttonu Tiklandi");
+
+            mainCanvas.SetActive(false);
+
+            //Resources.FindObjectsOfTypeAll<Canvas>()
+
+            settingsCanvas.SetActive(true);
+            //settingsCanvas.SetActive(true);
+
+
+
+
+
+        }
+        else if (buttonName.Equals("exit"))
+        {
+            Debug.Log("Exit Buttonu Tiklandi");
+
+            settingsCanvas.SetActive(false);
+
+            mainCanvas.SetActive(true);
+
+
+        }
+        else
+        {
+            Debug.Log("UNSUPPORTED BUTTON");
+        }
+
+
+
+
+
 	}
 }
