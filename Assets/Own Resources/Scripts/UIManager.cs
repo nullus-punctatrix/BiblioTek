@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour {
 
     int[] size = { 500, 750, 1000, 1250 };
 
-    string[] color = { "Red", "Green", "Blue" };
+    string[] color = { "Black","Red", "Green", "Blue" };
 
     string[] type = {"Arial","Anton","Bangers","Liberation","Noto"};
 
@@ -101,6 +101,10 @@ public class UIManager : MonoBehaviour {
         {
             changePartitionButton.GetComponentInChildren<Text>().text = "Partition Number: " + currentPartitionNumber;
         }
+        else
+        {
+            changePartitionButton.GetComponentInChildren<Text>().text = "Partition Number: " + 0;
+        }
 
         settingsCanvas.SetActive(false);
         bookSelectionCanvas.SetActive(false);
@@ -110,7 +114,7 @@ public class UIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(totalPartitionNumber);
+       //Debug.Log(totalPartitionNumber);
 
     }
 
@@ -226,7 +230,7 @@ public class UIManager : MonoBehaviour {
 
             fontColorCount++;
 
-            fontColorCount %= 3;
+            fontColorCount %= 4;
 
             SendMessage("changeTextColor", color[fontColorCount]);
 
@@ -255,11 +259,12 @@ public class UIManager : MonoBehaviour {
             if (totalPartitionNumber != 0)
             {
                 Debug.Log("ICINE GIRDI");
+
+                currentPartitionNumber = (currentPartitionNumber + 1) % totalPartitionNumber;
+
                 changePartitionButton.GetComponentInChildren<Text>().text = "Partition Number: " + currentPartitionNumber;
 
                 SendMessage("receiveCurrentSegment", currentPartitionNumber);
-
-                currentPartitionNumber = (currentPartitionNumber + 1) % totalPartitionNumber;
             }
         }
         else

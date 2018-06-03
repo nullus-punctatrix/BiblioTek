@@ -63,7 +63,12 @@ public class BiblioTekMainScript : MonoBehaviour {
     void changeTextColor(string color)
     {
 
-        if (color.Equals("Red")){
+        if (color.Equals("Black"))
+        {
+
+            Debug.Log("Color Changed");
+        }
+        else if (color.Equals("Red")){
 
             textColor = new Color32(255, 0, 0, 255);
             Debug.Log("Color Changed");
