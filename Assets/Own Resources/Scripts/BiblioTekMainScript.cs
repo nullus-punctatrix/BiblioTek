@@ -27,7 +27,7 @@ public class BiblioTekMainScript : MonoBehaviour {
 		if (LoadTargetsFlag & pagesRecieved) {
 			LoadTargets ();
 			LoadTargetsFlag = !LoadTargetsFlag;
-            Debug.Log("GIRDI LA GIRDI SIKINTI YOK AMQ");
+            Debug.Log("GIRDI LA GIRDI SIKINTI YOK");
 		}
 		else if (segmentChanged){
 			LoadSegment (segmentPointer);
