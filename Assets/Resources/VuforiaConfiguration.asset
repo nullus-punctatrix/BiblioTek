@@ -44,9 +44,9 @@ MonoBehaviour:
       ContainsMagnet: 0
   databaseLoad:
     dataSetsToLoad:
-    - matlabDenemeleri
+    - BookDatabase
     dataSetsToActivate:
-    - matlabDenemeleri
+    - BookDatabase
   videoBackground:
     clippingMode: 0
     numDivisions: 2
