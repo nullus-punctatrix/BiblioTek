@@ -1460,7 +1460,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Font Size:
+  m_Text: '
 
 '
 --- !u!222 &578062971
@@ -2487,7 +2487,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Font Type
+  m_Text: 
 --- !u!222 &1009991303
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2561,7 +2561,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Font Color
+  m_Text: 
 --- !u!222 &1054184203
 CanvasRenderer:
   m_ObjectHideFlags: 0

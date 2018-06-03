@@ -20,11 +20,14 @@ public class BiblioTekMainScript : MonoBehaviour {
 	private bool initialized = false;
     private bool colorChanged = true;
 
-    private Color32 textColor = new Color32(50, 50, 50, 255);
+    private Color32 textColor;
+
+    private TMP_FontAsset textFont;
 
     void Start () {
-		
-	}
+        textColor = new Color32(50, 50, 50, 255);
+        textFont = Resources.Load("ARIAL SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
+    }
 
 	void Update () {
 		if (LoadTargetsFlag & pagesRecieved) {
@@ -82,6 +85,55 @@ public class BiblioTekMainScript : MonoBehaviour {
 
     }
 
+    void changeTextType(string type)
+    {
+
+        if (type.Equals("Arial"))
+        {
+            //textFont = Resources.Load("ARIAL SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
+            Debug.Log("Type Changed");
+            Debug.Log(textFont);
+
+
+        }
+        else if (type.Equals("Anton"))
+        {
+            textFont = Resources.Load("ANTON SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
+            Debug.Log("Type Changed");
+            Debug.Log(textFont);
+
+
+        }
+        else if (type.Equals("Bangers"))
+        {
+            textFont = Resources.Load("BANGERS SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
+            Debug.Log("Type Changed");
+            Debug.Log(textFont);
+
+        }
+        else if (type.Equals("Liberation"))
+        {
+            textFont = Resources.Load("LIBERATIONSANS SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
+            Debug.Log("Type Changed");
+            Debug.Log(textFont);
+
+        }
+        else if (type.Equals("Noto"))
+        {
+            textFont = Resources.Load("NOTOSANS SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
+            Debug.Log("Type Changed");
+            Debug.Log(textFont);
+
+        }
+        else
+        {
+            Debug.Log("No Font Found");
+        }
+
+        LoadTargetsFlag = true;
+
+    }
+
     void recievePages(string[] pages){
 		cachedPages = pages;
 		for (int i = 0; i < cachedPages.Length; i++) {
@@ -114,7 +166,7 @@ public class BiblioTekMainScript : MonoBehaviour {
             //			}
 
             textBox.GetComponent<TextMeshPro>().color = textColor;
-
+            textBox.GetComponent<TextMeshPro>().font = textFont;
             textBox.GetComponent<TextMeshPro> ().alignment = TextAlignmentOptions.TopJustified;
 			//textBox.GetComponent<TextMeshPro> ().autoSizeTextContainer = true;
 			//textBox.GetComponent<TextMeshPro> ().fontSizeMin = 100;

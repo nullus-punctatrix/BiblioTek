@@ -11,9 +11,13 @@ public class UIManager : MonoBehaviour {
 
     string[] color = { "Red", "Green", "Blue" };
 
+    string[] type = {"Arial","Anton","Bangers","Liberation","Noto"};
+
     int fontSizeCount=0;
 
     int fontColorCount = 0;
+
+    int fontTypeCount = 0;
 
     GameObject mainCanvas;
     GameObject settingsCanvas;
@@ -31,6 +35,7 @@ public class UIManager : MonoBehaviour {
     Button backInUploadButton;
     Button fontSizeButton;
     Button fontColorButton;
+    Button fontTypeButton;
 
     // Use this for initialization
     void Start () {
@@ -73,9 +78,17 @@ public class UIManager : MonoBehaviour {
 
         fontSizeButton = GameObject.Find("FontSize").GetComponent<Button>();
         fontSizeButton.onClick.AddListener(delegate { ListenUI("changeFontSize"); });
+        fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: " + size[fontSizeCount];
+
 
         fontColorButton = GameObject.Find("FontColor").GetComponent<Button>();
         fontColorButton.onClick.AddListener(delegate { ListenUI("changeFontColor"); });
+        fontColorButton.GetComponentInChildren<Text>().text = "Font Color: " + color[fontColorCount];
+
+
+        fontTypeButton = GameObject.Find("FontType").GetComponent<Button>();
+        fontTypeButton.onClick.AddListener(delegate { ListenUI("changeFontType"); });
+        fontTypeButton.GetComponentInChildren<Text>().text = "Font Type: " + type[fontTypeCount];
 
         settingsCanvas.SetActive(false);
         bookSelectionCanvas.SetActive(false);
@@ -170,22 +183,45 @@ public class UIManager : MonoBehaviour {
         {
             Debug.Log("ChangeFontSize Buttonu Tiklandi");
 
+            fontSizeCount++;
+
+            fontSizeCount %= 4;
+
             SendMessage("changeMaxCharLimit", size[fontSizeCount]);
 
-            fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: " + size[(fontSizeCount++)%4];
-       
+            fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: " + size[fontSizeCount];
+
+            
 
         }
         else if (buttonName.Equals("changeFontColor"))
         {
             Debug.Log("ChangeFontColor Buttonu Tiklandi");
 
+            fontColorCount++;
+
+            fontColorCount %= 3;
+
             SendMessage("changeTextColor", color[fontColorCount]);
 
-            fontColorButton.GetComponentInChildren<Text>().text = "Font Color: " + color[(fontColorCount++) % 3];
+            fontColorButton.GetComponentInChildren<Text>().text = "Font Color: " + color[fontColorCount];
 
 
-        }        
+        }
+        else if (buttonName.Equals("changeFontType"))
+        {
+            Debug.Log("ChangeFontType Buttonu Tiklandi");
+
+            fontTypeCount++;
+
+            fontTypeCount %= 5;
+
+            SendMessage("changeTextType", type[fontTypeCount]);
+
+            fontTypeButton.GetComponentInChildren<Text>().text = "Font Color: " + type[fontTypeCount];
+
+
+        }
         else
         {
             Debug.Log("UNSUPPORTED BUTTON");
