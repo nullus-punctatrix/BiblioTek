@@ -18,7 +18,9 @@ public class BiblioTekMainScript : MonoBehaviour {
 	private int segmentPointer = 0;
 	private bool segmentChanged = false;
 	private bool initialized = false;
-    private bool colorChanged = true;
+    private bool colorChanged = false;
+	private bool bestFlag = true;
+	private bool fontChanged = false;
 
     private int currentSegment=0;
 
@@ -35,11 +37,14 @@ public class BiblioTekMainScript : MonoBehaviour {
 		if (LoadTargetsFlag & pagesRecieved) {
 			LoadTargets ();
 			LoadTargetsFlag = !LoadTargetsFlag;
-            //Debug.Log("GIRDI LA GIRDI SIKINTI YOK");
-		}
-		else if (segmentChanged){
+			//Debug.Log("GIRDI LA GIRDI SIKINTI YOK");
+		} else if (segmentChanged) {
 			LoadSegment (segmentPointer);
 			segmentChanged = false;
+		} else if (colorChanged) {
+			ChangeColor ();
+		} else if (fontChanged) {
+			ChangeFont ();
 		}
 		else {
 			TrackableBehaviour[] tbs = TrackerManager.Instance.GetStateManager ().GetActiveTrackableBehaviours ().ToArray ();
@@ -64,7 +69,7 @@ public class BiblioTekMainScript : MonoBehaviour {
     {
         if (color.Equals("Black"))
         {
-
+			textColor = new Color32(50, 50, 50, 255);
             //Debug.Log("Color Changed");
         }
         else if (color.Equals("Red")){
@@ -87,7 +92,7 @@ public class BiblioTekMainScript : MonoBehaviour {
            // Debug.Log("No Color Found");
         }
 
-        LoadTargetsFlag = true;
+        colorChanged = true;
 
     }
 
@@ -96,6 +101,7 @@ public class BiblioTekMainScript : MonoBehaviour {
 
         if (type.Equals("Arial"))
         {
+			textFont = Resources.Load("ARIAL SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
             //textFont = Resources.Load("ARIAL SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
             //Debug.Log("Type Changed");
             //Debug.Log(textFont);
@@ -136,7 +142,9 @@ public class BiblioTekMainScript : MonoBehaviour {
             //Debug.Log("No Font Found");
         }
 
-        LoadTargetsFlag = true;
+		Debug.Log ("Fontum: " + textFont);
+        //LoadTargetsFlag = true;
+		fontChanged = true;
 
     }
 
@@ -166,37 +174,41 @@ public class BiblioTekMainScript : MonoBehaviour {
 
         SendMessage("receiveMaxNumberOfPartitions", maxSegment);
 
-        int count = 1;
-		for (int i = 0; i < tbs.Length; i++) {
-			tbs [i].name = "Marker_" + count++;
-			tbs [i].tag = "Marker";
-			tbs [i].gameObject.AddComponent<DefaultTrackableEventHandler> ();
-			tbs [i].gameObject.AddComponent<TurnOffBehaviour> ();
-			Transform canvasOb = (Transform)Transform.Instantiate (canvas);
-			Transform textBox = (Transform)Transform.Instantiate (textPrefab);
-			textBox.transform.SetParent (canvasOb);
-			textBox.GetComponent<RectTransform> ().sizeDelta = new Vector2 (0, 0);
+		if (bestFlag) {
+			int count = 1;
+			for (int i = 0; i < tbs.Length; i++) {
+				tbs [i].name = "Marker_" + count++;
+				tbs [i].tag = "Marker";
+				tbs [i].gameObject.AddComponent<DefaultTrackableEventHandler> ();
+				tbs [i].gameObject.AddComponent<TurnOffBehaviour> ();
+				Transform canvasOb = (Transform)Transform.Instantiate (canvas);
+				Transform textBox = (Transform)Transform.Instantiate (textPrefab);
+				textBox.transform.SetParent (canvasOb);
+				textBox.GetComponent<RectTransform> ().sizeDelta = new Vector2 (0, 0);
 
-            //			if (i + (tbs.Length * segmentPointer) < cachedPages.Length) {
-            //				textBox.GetComponent<TextMeshPro> ().text = cachedPages [i + (tbs.Length * segmentPointer)];
-            //			}
+				//			if (i + (tbs.Length * segmentPointer) < cachedPages.Length) {
+				//				textBox.GetComponent<TextMeshPro> ().text = cachedPages [i + (tbs.Length * segmentPointer)];
+				//			}
 
-			textBox.GetComponent<TextMeshPro> ().color = textColor;
-            textBox.GetComponent<TextMeshPro>().font = textFont;
-            textBox.GetComponent<TextMeshPro> ().alignment = TextAlignmentOptions.TopJustified;
-			//textBox.GetComponent<TextMeshPro> ().autoSizeTextContainer = true;
-			//textBox.GetComponent<TextMeshPro> ().fontSizeMin = 100;
-			//textBox.GetComponent<TextMeshPro> ().fontSizeMax = 9999;
+				//textBox.GetComponent<TextMeshPro> ().color = textColor;
+				//textBox.GetComponent<TextMeshPro> ().font = textFont;
 
-			canvasOb.transform.SetParent(tbs[i].gameObject.transform); 
-			canvasOb.transform.localPosition = new Vector3(-0.2f, 0f, -0.4f);
+				textBox.GetComponent<TextMeshPro> ().alignment = TextAlignmentOptions.TopJustified;
+				//textBox.GetComponent<TextMeshPro> ().autoSizeTextContainer = true;
+				//textBox.GetComponent<TextMeshPro> ().fontSizeMin = 100;
+				//textBox.GetComponent<TextMeshPro> ().fontSizeMax = 9999;
 
-			//textBox.right = 0;
+				canvasOb.transform.SetParent (tbs [i].gameObject.transform); 
+				canvasOb.transform.localPosition = new Vector3 (-0.2f, 0f, -0.4f);
 
-			canvasOb.transform.localRotation = Quaternion.identity;
-			canvasOb.transform.localScale = new Vector3 (0.0005f, 0.0005f, 0.0005f);
-			canvasOb.transform.Rotate (new Vector3 (90, 0, 0));
-			canvasOb.gameObject.SetActive(true);
+				//textBox.right = 0;
+
+				canvasOb.transform.localRotation = Quaternion.identity;
+				canvasOb.transform.localScale = new Vector3 (0.0005f, 0.0005f, 0.0005f);
+				canvasOb.transform.Rotate (new Vector3 (90, 0, 0));
+				canvasOb.gameObject.SetActive (true);
+			}
+			bestFlag = false;
 		}
 		LoadSegment (currentSegment);
 	}
@@ -210,5 +222,21 @@ public class BiblioTekMainScript : MonoBehaviour {
 			}
 			objArr [i].transform.Find ("Canvas Prefab(Clone)").transform.Find ("textPrefab(Clone)").GetComponent<TextMeshPro> ().text = page;
 		}
+	}
+
+	void ChangeColor(){
+		GameObject[] objArr = GameObject.FindGameObjectsWithTag ("Marker");
+		for (int i = 0; i < objArr.Length; i++) {
+			objArr [i].transform.Find ("Canvas Prefab(Clone)").transform.Find ("textPrefab(Clone)").GetComponent<TextMeshPro> ().color = textColor;
+		}
+		colorChanged = false;
+	}
+
+	void ChangeFont(){
+		GameObject[] objArr = GameObject.FindGameObjectsWithTag ("Marker");
+		for (int i = 0; i < objArr.Length; i++) {
+			objArr [i].transform.Find ("Canvas Prefab(Clone)").transform.Find ("textPrefab(Clone)").GetComponent<TextMeshPro> ().font = textFont;
+		}
+		fontChanged = false;
 	}
 }
