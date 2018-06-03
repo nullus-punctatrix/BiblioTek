@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour {
 
     int totalPartitionNumber=0;
 
+    int currentPartitionNumber = 0;
+
     GameObject mainCanvas;
     GameObject settingsCanvas;
     GameObject bookSelectionCanvas;
@@ -32,7 +34,7 @@ public class UIManager : MonoBehaviour {
     Button bookSelectionButton;
     Button uploadButton;
     Button linkButton;
-    Button backInPartitionButton;
+    //Button backInPartitionButton;
     Button backInBookSelectButton;
     Button backInUploadButton;
     Button fontSizeButton;
@@ -70,8 +72,8 @@ public class UIManager : MonoBehaviour {
         linkButton = GameObject.Find("LinkButton").GetComponent<Button>();
         linkButton.onClick.AddListener(delegate { ListenUI("link"); });
 
-        backInPartitionButton= GameObject.Find("BackInPartition").GetComponent<Button>();
-        backInPartitionButton.onClick.AddListener(delegate { ListenUI("backInPartition"); });
+        //backInPartitionButton= GameObject.Find("BackInPartition").GetComponent<Button>();
+        //backInPartitionButton.onClick.AddListener(delegate { ListenUI("backInPartition"); });
 
         backInBookSelectButton = GameObject.Find("BackInBookSelect").GetComponent<Button>();
         backInBookSelectButton.onClick.AddListener(delegate { ListenUI("backInBookSelect"); });
@@ -95,7 +97,10 @@ public class UIManager : MonoBehaviour {
 
         changePartitionButton = GameObject.Find("ChangePartition").GetComponent<Button>();
         changePartitionButton.onClick.AddListener(delegate { ListenUI("changePartition"); });
-
+        if (totalPartitionNumber != 0)
+        {
+            changePartitionButton.GetComponentInChildren<Text>().text = "Partition Number: " + currentPartitionNumber;
+        }
 
         settingsCanvas.SetActive(false);
         bookSelectionCanvas.SetActive(false);
@@ -105,8 +110,9 @@ public class UIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log(totalPartitionNumber);
 
-	}
+    }
 
     void receiveMaxNumberOfPartitions(int maxNOP)
     {
@@ -246,15 +252,15 @@ public class UIManager : MonoBehaviour {
         {
             Debug.Log("ChangePartition Buttonu Tiklandi");
 
-            fontTypeCount++;
+            if (totalPartitionNumber != 0)
+            {
+                Debug.Log("ICINE GIRMEDI");
+                changePartitionButton.GetComponentInChildren<Text>().text = "Partition Number: " + currentPartitionNumber;
 
-            fontTypeCount %= 5;
+                SendMessage("receiveCurrentSegment", currentPartitionNumber);
 
-            SendMessage("changeTextType", type[fontTypeCount]);
-
-            fontTypeButton.GetComponentInChildren<Text>().text = "Font Color: " + type[fontTypeCount];
-
-
+                currentPartitionNumber = (currentPartitionNumber + 1) % totalPartitionNumber;
+            }
         }
         else
         {

@@ -20,6 +20,8 @@ public class BiblioTekMainScript : MonoBehaviour {
 	private bool initialized = false;
     private bool colorChanged = true;
 
+    private int currentSegment=0;
+
     private Color32 textColor;
 
     private TMP_FontAsset textFont;
@@ -143,12 +145,18 @@ public class BiblioTekMainScript : MonoBehaviour {
         LoadTargetsFlag = true;
 
     }
+    void receiveCurrentSegment(int currentSegmento)
+    {
+        currentSegment = currentSegmento;
+        LoadTargetsFlag = true;
+    }
 
 	void LoadTargets(){
 		TrackableBehaviour[] tbs = TrackerManager.Instance.GetStateManager ().GetTrackableBehaviours ().ToArray ();
 		if (tbs.Length == 0) {
 			return;
 		}
+
 		int maxSegment = (cachedPages.Length / tbs.Length) + 1;
 
         SendMessage("receiveMaxNumberOfPartitions", maxSegment);
@@ -185,7 +193,7 @@ public class BiblioTekMainScript : MonoBehaviour {
 			canvasOb.transform.Rotate (new Vector3 (90, 0, 0));
 			canvasOb.gameObject.SetActive(true);
 		}
-		LoadSegment (0);
+		LoadSegment (currentSegment);
 	}
 
 	void LoadSegment(int segment){
