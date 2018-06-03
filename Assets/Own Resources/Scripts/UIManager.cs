@@ -78,7 +78,7 @@ public class UIManager : MonoBehaviour {
 
         fontSizeButton = GameObject.Find("FontSize").GetComponent<Button>();
         fontSizeButton.onClick.AddListener(delegate { ListenUI("changeFontSize"); });
-        fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: " + size[fontSizeCount];
+        fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: XLarge";
 
 
         fontColorButton = GameObject.Find("FontColor").GetComponent<Button>();
@@ -189,7 +189,20 @@ public class UIManager : MonoBehaviour {
 
             SendMessage("changeMaxCharLimit", size[fontSizeCount]);
 
-            fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: " + size[fontSizeCount];
+			if (size [fontSizeCount] == 500) {
+				fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: XLarge";
+			}
+			else if (size [fontSizeCount] == 750) {
+				fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: Large";
+			}
+			else if (size [fontSizeCount] == 1000) {
+				fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: Medium";
+			}
+			else if (size [fontSizeCount] == 1250) {
+				fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: Small";
+			}
+
+            
 
             
 
