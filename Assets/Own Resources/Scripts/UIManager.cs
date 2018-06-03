@@ -5,13 +5,22 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
+    string Url = "https://finalprojectgeeo.firebaseapp.com/";
+
     GameObject mainCanvas;
     GameObject settingsCanvas;
     GameObject bookSelectionCanvas;
     GameObject partitionSelectionCanvas;
+    GameObject uploadBookCanvas;
 
     Button settingsButton;
     Button exitButton;
+    Button bookSelectionButton;
+    Button uploadButton;
+    Button linkButton;
+    Button backInPartitionButton;
+    Button backInBookSelectButton;
+    Button backInUploadButton;
 
 
     // Use this for initialization
@@ -21,6 +30,7 @@ public class UIManager : MonoBehaviour {
         settingsCanvas = GameObject.Find("SettingsCanvas").gameObject;
         bookSelectionCanvas = GameObject.Find("BookSelectionCanvas").gameObject;
         partitionSelectionCanvas = GameObject.Find("PartitionSelectionCanvas").gameObject;
+        uploadBookCanvas = GameObject.Find("UploadBookCanvas").gameObject;
 
         Debug.Log(mainCanvas);
         Debug.Log(settingsCanvas);
@@ -34,10 +44,28 @@ public class UIManager : MonoBehaviour {
         exitButton = GameObject.Find("Exit").GetComponent<Button>();
         exitButton.onClick.AddListener(delegate { ListenUI("exit"); });
 
+        bookSelectionButton = GameObject.Find("BookSelection").GetComponent<Button>();
+        bookSelectionButton.onClick.AddListener(delegate { ListenUI("bookSelection"); });
+
+        uploadButton = GameObject.Find("UploadBook").GetComponent<Button>();
+        uploadButton.onClick.AddListener(delegate { ListenUI("uploadCanvas"); });
+
+        linkButton = GameObject.Find("LinkButton").GetComponent<Button>();
+        linkButton.onClick.AddListener(delegate { ListenUI("link"); });
+
+        backInPartitionButton= GameObject.Find("BackInPartition").GetComponent<Button>();
+        backInPartitionButton.onClick.AddListener(delegate { ListenUI("backInPartition"); });
+
+        backInBookSelectButton = GameObject.Find("BackInBookSelect").GetComponent<Button>();
+        backInBookSelectButton.onClick.AddListener(delegate { ListenUI("backInBookSelect"); });
+
+        backInUploadButton = GameObject.Find("BackInUpload").GetComponent<Button>();
+        backInUploadButton.onClick.AddListener(delegate { ListenUI("backInUpload"); });
 
         settingsCanvas.SetActive(false);
         bookSelectionCanvas.SetActive(false);
         partitionSelectionCanvas.SetActive(false);
+        uploadBookCanvas.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -55,14 +83,7 @@ public class UIManager : MonoBehaviour {
 
             mainCanvas.SetActive(false);
 
-            //Resources.FindObjectsOfTypeAll<Canvas>()
-
             settingsCanvas.SetActive(true);
-            //settingsCanvas.SetActive(true);
-
-
-
-
 
         }
         else if (buttonName.Equals("exit"))
@@ -73,6 +94,61 @@ public class UIManager : MonoBehaviour {
 
             mainCanvas.SetActive(true);
 
+        }
+        else if (buttonName.Equals("bookSelection"))
+        {
+            Debug.Log("BookSelection Buttonu Tiklandi");
+
+            settingsCanvas.SetActive(false);
+
+            bookSelectionCanvas.SetActive(true);
+
+        }
+        else if (buttonName.Equals("uploadCanvas"))
+        {
+            Debug.Log("Upload Buttonu Tiklandi");
+
+            bookSelectionCanvas.SetActive(false);
+
+            uploadBookCanvas.SetActive(true);
+
+        }
+        else if (buttonName.Equals("link"))
+        {
+            Debug.Log("Link Buttonu Tiklandi");
+
+            uploadBookCanvas.SetActive(false);
+
+            bookSelectionCanvas.SetActive(true);
+
+            Application.OpenURL(Url);
+
+        }
+        else if (buttonName.Equals("backInPartition"))
+        {
+            Debug.Log("BackInPartition Buttonu Tiklandi");
+
+            partitionSelectionCanvas.SetActive(false);
+
+            settingsCanvas.SetActive(true);
+
+        }
+        else if (buttonName.Equals("backInBookSelect"))
+        {
+            Debug.Log("BackInBookSelect Buttonu Tiklandi");
+
+            bookSelectionCanvas.SetActive(false);
+
+            settingsCanvas.SetActive(true);
+
+        }
+        else if (buttonName.Equals("backInUpload"))
+        {
+            Debug.Log("BackInUpload Buttonu Tiklandi");
+
+            uploadBookCanvas.SetActive(false);
+
+            bookSelectionCanvas.SetActive(true);
 
         }
         else
