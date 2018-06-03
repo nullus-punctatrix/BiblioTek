@@ -19,10 +19,12 @@ public class UIManager : MonoBehaviour {
 
     int fontTypeCount = 0;
 
+    int totalPartitionNumber=0;
+
     GameObject mainCanvas;
     GameObject settingsCanvas;
     GameObject bookSelectionCanvas;
-    GameObject partitionSelectionCanvas;
+    //GameObject partitionSelectionCanvas;
     GameObject uploadBookCanvas;
 
     Button settingsButton;
@@ -36,6 +38,7 @@ public class UIManager : MonoBehaviour {
     Button fontSizeButton;
     Button fontColorButton;
     Button fontTypeButton;
+    Button changePartitionButton;
 
     // Use this for initialization
     void Start () {
@@ -43,13 +46,13 @@ public class UIManager : MonoBehaviour {
         mainCanvas = GameObject.Find("MainCanvas").gameObject;
         settingsCanvas = GameObject.Find("SettingsCanvas").gameObject;
         bookSelectionCanvas = GameObject.Find("BookSelectionCanvas").gameObject;
-        partitionSelectionCanvas = GameObject.Find("PartitionSelectionCanvas").gameObject;
+        //partitionSelectionCanvas = GameObject.Find("PartitionSelectionCanvas").gameObject;
         uploadBookCanvas = GameObject.Find("UploadBookCanvas").gameObject;
 
         Debug.Log(mainCanvas);
         Debug.Log(settingsCanvas);
         Debug.Log(bookSelectionCanvas);
-        Debug.Log(partitionSelectionCanvas);
+        //Debug.Log(partitionSelectionCanvas);
 
         settingsButton = GameObject.Find("Settings").GetComponent<Button>();
         settingsButton.onClick.AddListener(delegate { ListenUI("settings"); });
@@ -90,9 +93,13 @@ public class UIManager : MonoBehaviour {
         fontTypeButton.onClick.AddListener(delegate { ListenUI("changeFontType"); });
         fontTypeButton.GetComponentInChildren<Text>().text = "Font Type: " + type[fontTypeCount];
 
+        changePartitionButton = GameObject.Find("ChangePartition").GetComponent<Button>();
+        changePartitionButton.onClick.AddListener(delegate { ListenUI("changePartition"); });
+
+
         settingsCanvas.SetActive(false);
         bookSelectionCanvas.SetActive(false);
-        partitionSelectionCanvas.SetActive(false);
+        //partitionSelectionCanvas.SetActive(false);
         uploadBookCanvas.SetActive(false);
     }
 	
@@ -100,6 +107,11 @@ public class UIManager : MonoBehaviour {
 	void Update () {
 
 	}
+
+    void receiveMaxNumberOfPartitions(int maxNOP)
+    {
+        totalPartitionNumber=maxNOP;
+    }
 
 	void ListenUI(string buttonName){
 
@@ -152,15 +164,15 @@ public class UIManager : MonoBehaviour {
             Application.OpenURL(Url);
 
         }
-        else if (buttonName.Equals("backInPartition"))
-        {
-            Debug.Log("BackInPartition Buttonu Tiklandi");
+        //else if (buttonName.Equals("backInPartition"))
+        //{
+        //    Debug.Log("BackInPartition Buttonu Tiklandi");
 
-            partitionSelectionCanvas.SetActive(false);
+        //    partitionSelectionCanvas.SetActive(false);
 
-            settingsCanvas.SetActive(true);
+        //    settingsCanvas.SetActive(true);
 
-        }
+        //}
         else if (buttonName.Equals("backInBookSelect"))
         {
             Debug.Log("BackInBookSelect Buttonu Tiklandi");
@@ -201,11 +213,6 @@ public class UIManager : MonoBehaviour {
 			else if (size [fontSizeCount] == 1250) {
 				fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: Small";
 			}
-
-            
-
-            
-
         }
         else if (buttonName.Equals("changeFontColor"))
         {
@@ -235,10 +242,25 @@ public class UIManager : MonoBehaviour {
 
 
         }
+        else if (buttonName.Equals("changePartition"))
+        {
+            Debug.Log("ChangePartition Buttonu Tiklandi");
+
+            fontTypeCount++;
+
+            fontTypeCount %= 5;
+
+            SendMessage("changeTextType", type[fontTypeCount]);
+
+            fontTypeButton.GetComponentInChildren<Text>().text = "Font Color: " + type[fontTypeCount];
+
+
+        }
         else
         {
             Debug.Log("UNSUPPORTED BUTTON");
         }
+
 
 
 

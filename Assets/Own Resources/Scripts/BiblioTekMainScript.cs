@@ -150,7 +150,10 @@ public class BiblioTekMainScript : MonoBehaviour {
 			return;
 		}
 		int maxSegment = (cachedPages.Length / tbs.Length) + 1;
-		int count = 1;
+
+        SendMessage("receiveMaxNumberOfPartitions", maxSegment);
+
+        int count = 1;
 		for (int i = 0; i < tbs.Length; i++) {
 			tbs [i].name = "Marker_" + count++;
 			tbs [i].tag = "Marker";
