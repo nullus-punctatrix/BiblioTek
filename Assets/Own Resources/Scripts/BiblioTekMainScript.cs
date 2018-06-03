@@ -62,7 +62,6 @@ public class BiblioTekMainScript : MonoBehaviour {
 
     void changeTextColor(string color)
     {
-
         if (color.Equals("Black"))
         {
 
@@ -182,7 +181,7 @@ public class BiblioTekMainScript : MonoBehaviour {
             //				textBox.GetComponent<TextMeshPro> ().text = cachedPages [i + (tbs.Length * segmentPointer)];
             //			}
 
-            textBox.GetComponent<TextMeshPro>().color = textColor;
+			textBox.GetComponent<TextMeshPro> ().color = textColor;
             textBox.GetComponent<TextMeshPro>().font = textFont;
             textBox.GetComponent<TextMeshPro> ().alignment = TextAlignmentOptions.TopJustified;
 			//textBox.GetComponent<TextMeshPro> ().autoSizeTextContainer = true;
