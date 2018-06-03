@@ -71,7 +71,7 @@ public class PageManager : MonoBehaviour {
 		if (number <= pageArray.Length) {
 			pageArray [number] = str;
 		} else {
-			Debug.Log("Variable \"Number\" is out of bonds...");
+			//Debug.Log("Variable \"Number\" is out of bonds...");
 		}
 	}
 }

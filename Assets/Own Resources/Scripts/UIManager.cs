@@ -51,9 +51,9 @@ public class UIManager : MonoBehaviour {
         //partitionSelectionCanvas = GameObject.Find("PartitionSelectionCanvas").gameObject;
         uploadBookCanvas = GameObject.Find("UploadBookCanvas").gameObject;
 
-        Debug.Log(mainCanvas);
-        Debug.Log(settingsCanvas);
-        Debug.Log(bookSelectionCanvas);
+        //Debug.Log(mainCanvas);
+        //Debug.Log(settingsCanvas);
+        //Debug.Log(bookSelectionCanvas);
         //Debug.Log(partitionSelectionCanvas);
 
         settingsButton = GameObject.Find("Settings").GetComponent<Button>();
@@ -125,11 +125,11 @@ public class UIManager : MonoBehaviour {
 
 	void ListenUI(string buttonName){
 
-        Debug.Log("Basildi");
+        //Debug.Log("Basildi");
 
         if (buttonName.Equals("settings"))
         {
-            Debug.Log("Settings Buttonu Tiklandi");
+           // Debug.Log("Settings Buttonu Tiklandi");
 
             mainCanvas.SetActive(false);
 
@@ -138,7 +138,7 @@ public class UIManager : MonoBehaviour {
         }
         else if (buttonName.Equals("exit"))
         {
-            Debug.Log("Exit Buttonu Tiklandi");
+           // Debug.Log("Exit Buttonu Tiklandi");
 
             settingsCanvas.SetActive(false);
 
@@ -147,7 +147,7 @@ public class UIManager : MonoBehaviour {
         }
         else if (buttonName.Equals("bookSelection"))
         {
-            Debug.Log("BookSelection Buttonu Tiklandi");
+            //Debug.Log("BookSelection Buttonu Tiklandi");
 
             settingsCanvas.SetActive(false);
 
@@ -156,7 +156,7 @@ public class UIManager : MonoBehaviour {
         }
         else if (buttonName.Equals("uploadCanvas"))
         {
-            Debug.Log("Upload Buttonu Tiklandi");
+          //  Debug.Log("Upload Buttonu Tiklandi");
 
             bookSelectionCanvas.SetActive(false);
 
@@ -165,7 +165,7 @@ public class UIManager : MonoBehaviour {
         }
         else if (buttonName.Equals("link"))
         {
-            Debug.Log("Link Buttonu Tiklandi");
+           // Debug.Log("Link Buttonu Tiklandi");
 
             uploadBookCanvas.SetActive(false);
 
@@ -185,7 +185,7 @@ public class UIManager : MonoBehaviour {
         //}
         else if (buttonName.Equals("backInBookSelect"))
         {
-            Debug.Log("BackInBookSelect Buttonu Tiklandi");
+           // Debug.Log("BackInBookSelect Buttonu Tiklandi");
 
             bookSelectionCanvas.SetActive(false);
 
@@ -194,7 +194,7 @@ public class UIManager : MonoBehaviour {
         }
         else if (buttonName.Equals("backInUpload"))
         {
-            Debug.Log("BackInUpload Buttonu Tiklandi");
+           // Debug.Log("BackInUpload Buttonu Tiklandi");
 
             uploadBookCanvas.SetActive(false);
 
@@ -203,7 +203,7 @@ public class UIManager : MonoBehaviour {
         }
         else if (buttonName.Equals("changeFontSize"))
         {
-            Debug.Log("ChangeFontSize Buttonu Tiklandi");
+           // Debug.Log("ChangeFontSize Buttonu Tiklandi");
 
             fontSizeCount++;
 
@@ -226,7 +226,7 @@ public class UIManager : MonoBehaviour {
         }
         else if (buttonName.Equals("changeFontColor"))
         {
-            Debug.Log("ChangeFontColor Buttonu Tiklandi");
+            //Debug.Log("ChangeFontColor Buttonu Tiklandi");
 
             fontColorCount++;
 
@@ -240,7 +240,7 @@ public class UIManager : MonoBehaviour {
         }
         else if (buttonName.Equals("changeFontType"))
         {
-            Debug.Log("ChangeFontType Buttonu Tiklandi");
+           // Debug.Log("ChangeFontType Buttonu Tiklandi");
 
             fontTypeCount++;
 
@@ -254,11 +254,11 @@ public class UIManager : MonoBehaviour {
         }
         else if (buttonName.Equals("changePartition"))
         {
-            Debug.Log("ChangePartition Buttonu Tiklandi");
+          //  Debug.Log("ChangePartition Buttonu Tiklandi");
 
             if (totalPartitionNumber != 0)
             {
-                Debug.Log("ICINE GIRDI");
+              //  Debug.Log("ICINE GIRDI");
 
                 currentPartitionNumber = (currentPartitionNumber + 1) % totalPartitionNumber;
 
@@ -269,7 +269,7 @@ public class UIManager : MonoBehaviour {
         }
         else
         {
-            Debug.Log("UNSUPPORTED BUTTON");
+           // Debug.Log("UNSUPPORTED BUTTON");
         }
 
 

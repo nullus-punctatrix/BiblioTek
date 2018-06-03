@@ -35,7 +35,7 @@ public class BiblioTekMainScript : MonoBehaviour {
 		if (LoadTargetsFlag & pagesRecieved) {
 			LoadTargets ();
 			LoadTargetsFlag = !LoadTargetsFlag;
-            Debug.Log("GIRDI LA GIRDI SIKINTI YOK");
+            //Debug.Log("GIRDI LA GIRDI SIKINTI YOK");
 		}
 		else if (segmentChanged){
 			LoadSegment (segmentPointer);
@@ -66,26 +66,26 @@ public class BiblioTekMainScript : MonoBehaviour {
         if (color.Equals("Black"))
         {
 
-            Debug.Log("Color Changed");
+            //Debug.Log("Color Changed");
         }
         else if (color.Equals("Red")){
 
             textColor = new Color32(255, 0, 0, 255);
-            Debug.Log("Color Changed");
+            //Debug.Log("Color Changed");
         }
         else if (color.Equals("Green"))
         {
             textColor = new Color32(0, 255, 0, 255);
-            Debug.Log("Color Changed");
+            //Debug.Log("Color Changed");
         }
         else if (color.Equals("Blue"))
         {
             textColor = new Color32(0, 0, 255, 255);
-            Debug.Log("Color Changed");
+           // Debug.Log("Color Changed");
         }
         else
         {
-            Debug.Log("No Color Found");
+           // Debug.Log("No Color Found");
         }
 
         LoadTargetsFlag = true;
@@ -98,43 +98,43 @@ public class BiblioTekMainScript : MonoBehaviour {
         if (type.Equals("Arial"))
         {
             //textFont = Resources.Load("ARIAL SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
-            Debug.Log("Type Changed");
-            Debug.Log(textFont);
+            //Debug.Log("Type Changed");
+            //Debug.Log(textFont);
 
 
         }
         else if (type.Equals("Anton"))
         {
             textFont = Resources.Load("ANTON SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
-            Debug.Log("Type Changed");
-            Debug.Log(textFont);
+           // Debug.Log("Type Changed");
+           // Debug.Log(textFont);
 
 
         }
         else if (type.Equals("Bangers"))
         {
             textFont = Resources.Load("BANGERS SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
-            Debug.Log("Type Changed");
-            Debug.Log(textFont);
+           // Debug.Log("Type Changed");
+           // Debug.Log(textFont);
 
         }
         else if (type.Equals("Liberation"))
         {
             textFont = Resources.Load("LIBERATIONSANS SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
-            Debug.Log("Type Changed");
-            Debug.Log(textFont);
+          //  Debug.Log("Type Changed");
+           // Debug.Log(textFont);
 
         }
         else if (type.Equals("Noto"))
         {
             textFont = Resources.Load("NOTOSANS SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
-            Debug.Log("Type Changed");
-            Debug.Log(textFont);
+          //  Debug.Log("Type Changed");
+          //  Debug.Log(textFont);
 
         }
         else
         {
-            Debug.Log("No Font Found");
+            //Debug.Log("No Font Found");
         }
 
         LoadTargetsFlag = true;
@@ -144,7 +144,7 @@ public class BiblioTekMainScript : MonoBehaviour {
     void recievePages(string[] pages){
 		cachedPages = pages;
 		for (int i = 0; i < cachedPages.Length; i++) {
-			Debug.Log (cachedPages[i]);
+			//Debug.Log (cachedPages[i]);
 		}
 		pagesRecieved = true;
         LoadTargetsFlag = true;
@@ -158,6 +158,7 @@ public class BiblioTekMainScript : MonoBehaviour {
 
 	void LoadTargets(){
 		TrackableBehaviour[] tbs = TrackerManager.Instance.GetStateManager ().GetTrackableBehaviours ().ToArray ();
+		Debug.Log ("Trackable Behaviours Length: " + tbs.Length);
 		if (tbs.Length == 0) {
 			return;
 		}
