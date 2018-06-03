@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PageManager : MonoBehaviour {
 
+    private string receivedFullText;
 	private string[] pageArray;
 	public eBookConverter ebc;
-	private int maxChar = 750;
+	private int maxChar = 500;
 
 	// Use this for initialization
 	void Start () {
@@ -17,8 +18,15 @@ public class PageManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void changeMaxCharLimit(int newMaxChar)
+    {
+        maxChar = newMaxChar;
+        recieveFullText(receivedFullText);
+    }
 		
 	void recieveFullText(string fullText){
+        receivedFullText = fullText;
 		processPage (fullText, this.maxChar);
 	}
 

@@ -27,6 +27,7 @@ public class BiblioTekMainScript : MonoBehaviour {
 		if (LoadTargetsFlag & pagesRecieved) {
 			LoadTargets ();
 			LoadTargetsFlag = !LoadTargetsFlag;
+            Debug.Log("GIRDI LA GIRDI SIKINTI YOK AMQ");
 		}
 		else if (segmentChanged){
 			LoadSegment (segmentPointer);
@@ -57,7 +58,9 @@ public class BiblioTekMainScript : MonoBehaviour {
 			Debug.Log (cachedPages[i]);
 		}
 		pagesRecieved = true;
-	}
+        LoadTargetsFlag = true;
+
+    }
 
 	void LoadTargets(){
 		TrackableBehaviour[] tbs = TrackerManager.Instance.GetStateManager ().GetTrackableBehaviours ().ToArray ();

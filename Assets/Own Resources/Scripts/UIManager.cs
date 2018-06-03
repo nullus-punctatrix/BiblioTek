@@ -7,6 +7,10 @@ public class UIManager : MonoBehaviour {
 
     string Url = "https://finalprojectgeeo.firebaseapp.com/";
 
+    int[] size = { 500, 750, 1000, 1250 };
+
+    int fountSizeCount=0;
+
     GameObject mainCanvas;
     GameObject settingsCanvas;
     GameObject bookSelectionCanvas;
@@ -21,6 +25,7 @@ public class UIManager : MonoBehaviour {
     Button backInPartitionButton;
     Button backInBookSelectButton;
     Button backInUploadButton;
+    Button fontSizeButton;
 
 
     // Use this for initialization
@@ -61,6 +66,10 @@ public class UIManager : MonoBehaviour {
 
         backInUploadButton = GameObject.Find("BackInUpload").GetComponent<Button>();
         backInUploadButton.onClick.AddListener(delegate { ListenUI("backInUpload"); });
+
+        fontSizeButton = GameObject.Find("FontSize").GetComponent<Button>();
+        fontSizeButton.onClick.AddListener(delegate { ListenUI("changeFontSize"); });
+
 
         settingsCanvas.SetActive(false);
         bookSelectionCanvas.SetActive(false);
@@ -149,6 +158,18 @@ public class UIManager : MonoBehaviour {
             uploadBookCanvas.SetActive(false);
 
             bookSelectionCanvas.SetActive(true);
+
+        }
+        else if (buttonName.Equals("changeFontSize"))
+        {
+            Debug.Log("ChangeFontSize Buttonu Tiklandi");
+
+            Debug.Log(fountSizeCount);
+
+            SendMessage("changeMaxCharLimit", size[fountSizeCount]);
+
+            fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: " + size[(fountSizeCount++)%4];
+       
 
         }
         else
