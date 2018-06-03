@@ -61,6 +61,9 @@ public class BiblioTekMainScript : MonoBehaviour {
 
 	void LoadTargets(){
 		TrackableBehaviour[] tbs = TrackerManager.Instance.GetStateManager ().GetTrackableBehaviours ().ToArray ();
+		if (tbs.Length == 0) {
+			return;
+		}
 		int maxSegment = (cachedPages.Length / tbs.Length) + 1;
 		int count = 1;
 		for (int i = 0; i < tbs.Length; i++) {
@@ -71,6 +74,7 @@ public class BiblioTekMainScript : MonoBehaviour {
 			Transform canvasOb = (Transform)Transform.Instantiate (canvas);
 			Transform textBox = (Transform)Transform.Instantiate (textPrefab);
 			textBox.transform.SetParent (canvasOb);
+			textBox.GetComponent<RectTransform> ().sizeDelta = new Vector2 (0, 0);
 
 //			if (i + (tbs.Length * segmentPointer) < cachedPages.Length) {
 //				textBox.GetComponent<TextMeshPro> ().text = cachedPages [i + (tbs.Length * segmentPointer)];
