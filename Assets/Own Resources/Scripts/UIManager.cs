@@ -129,7 +129,7 @@ public class UIManager : MonoBehaviour {
 
         if (buttonName.Equals("settings"))
         {
-           // Debug.Log("Settings Buttonu Tiklandi");
+           Debug.Log("Settings Buttonu Tiklandi");
 
             mainCanvas.SetActive(false);
 
