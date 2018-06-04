@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour {
 
     string[] type = {"Arial","Anton","Bangers","Liberation","Noto"};
 
-    int fontSizeCount=0;
+    int fontSizeCount=2;
 
     int fontColorCount = 0;
 
@@ -83,7 +83,7 @@ public class UIManager : MonoBehaviour {
 
         fontSizeButton = GameObject.Find("FontSize").GetComponent<Button>();
         fontSizeButton.onClick.AddListener(delegate { ListenUI("changeFontSize"); });
-        fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: XLarge";
+        fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: Medium";
 
 
         fontColorButton = GameObject.Find("FontColor").GetComponent<Button>();

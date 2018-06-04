@@ -7,7 +7,7 @@ public class PageManager : MonoBehaviour {
     private string receivedFullText;
 	private string[] pageArray;
 	public eBookConverter ebc;
-	private int maxChar = 500;
+	private int maxChar = 1000;
 
 	// Use this for initialization
 	void Start () {
