@@ -20,6 +20,24 @@ public class eBookConverter : MonoBehaviour{
 
     void Start()
     {
+        string filePath = Application.streamingAssetsPath + "/deneme.txt";
+        string jsonString;
+
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            WWW reader = new WWW(filePath);
+            while (!reader.isDone) { }
+
+            jsonString = reader.text;
+        }
+        else
+        {
+            jsonString = File.ReadAllText(filePath);
+        }
+
+        sendFullText(jsonString);
+
+
         //Debug.Log("SAAAAAAAAAAAAASADFAFSASFASFALSIUOFGOUIAGSFPASF");
         //path= "jar:file://" + Application.dataPath + "!/assets/";
 
@@ -31,14 +49,6 @@ public class eBookConverter : MonoBehaviour{
 
 
         //sendFullText(text);
-
-
-
-
-
-
-
-
         //if (Directory.Exists (startPath)) {
 
         //} else {
@@ -67,51 +77,26 @@ public class eBookConverter : MonoBehaviour{
 
             //Debug.Log("SAAAAAAAAAAAAASADFAFSASFASFALSIUOFGOUIAGSFPASF");
 
-            yarraminKirmaKolu = false;
+            //yarraminKirmaKolu = true;
 
-            string path2 = "jar:file://" + Application.dataPath + "!/assets/ConvertedTextFiles/deneme.txt";
+            //string path2 = "jar:file:/" + Application.dataPath + "!/assets/ConvertedTextFiles/deneme.txt";
 
-            string path3 = "Assets/StreamingAssets/ConvertedTextFiles/deneme.txt";
+            //string path3 = "Assets/StreamingAssets/ConvertedTextFiles/deneme.txt";
 
-            //path = Application.persistentDataPath;
+            //Debug.Log("BURDAPATLIYOSANANANISIKIYIM");
 
-            //path += "ConvertedTextFiles/deneme.txt";
+            //StreamReader reader = new StreamReader(path2);
 
-            //Debug.Log("LOLAMQ"+path);
+            //Debug.Log("YARRAQUE");
 
-            //if (Directory.Exists(path + "/books/"))
-            //{
-            //    Debug.Log("DOSYANINAMINAONURKOYSUN");
-            //    //string bookpath = path + "/books/deneme.txt";
-            //    //string text = System.IO.File.ReadAllText(@bookpath);
-            //}
-            //else
-            //{
-            //    Debug.Log("DOSYANINAMINAUNITYKOYSUN");
-            //    Directory.CreateDirectory(path + "/books/");
-            //}
+            //sendFullText(reader.ReadToEnd());
 
+            //Debug.Log("DELIGINEZUKUSUYDU");
 
-            //string text = System.IO.File.ReadAllText(@path);
+            //reader.Close();
 
-            Debug.Log("BURDAPATLIYOSANANANISIKIYIM");
+            //Debug.Log("LOL IQ");
 
-            StreamReader reader = new StreamReader(path2);
-            //Debug.Log(reader.ReadToEnd());
-
-            Debug.Log("YARRAQUE");
-
-            sendFullText(reader.ReadToEnd());
-
-            Debug.Log("DELIGINEZUKUSUYDU");
-
-            reader.Close();
-
-            Debug.Log("LOL IQ");
-
-            //Debug.Log(text.Substring(0, 50));
-
-            
             
         }
         
