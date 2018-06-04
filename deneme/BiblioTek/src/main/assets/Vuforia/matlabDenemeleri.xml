@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="onurunDeneme20" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme19" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme16" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme17" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme15" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme14" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme13" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme12" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme11" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme10" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme9" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme8" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme18" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme7" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme6" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme5" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme4" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme3" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme2" size="1.000000 1.444444" />
+    <ImageTarget name="onurunDeneme1" size="1.000000 1.444444" />
+  </Tracking>
+</QCARConfig>
