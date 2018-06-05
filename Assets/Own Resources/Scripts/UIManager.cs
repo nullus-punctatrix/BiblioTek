@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ public class UIManager : MonoBehaviour {
 
     string[] color = { "Black","Red", "Green", "Blue" };
 
-    string[] books = { "Deneme", "Alice In Wonderland", "uc", "dort" };
+    string[] books = { "Metamorphism", "Alice In Wonderland", "uc", "dort" };
 
     //string[] type = {"Arial","Anton","Bangers","Liberation","Noto"};
 
@@ -285,9 +286,9 @@ public class UIManager : MonoBehaviour {
 
             currentBookNumber %= 2;
 
-            Debug.Log("/" + books[currentBookNumber].ToLowerInvariant().Replace(" ", string.Empty) + ".txt");
+            Debug.Log("/" + Char.ToLowerInvariant((books[currentBookNumber])[0]) + (books[currentBookNumber].Replace(" ", string.Empty)).Substring(1) + ".txt");
 
-            SendMessage("changeExternalPath", "/"+ books[currentBookNumber].ToLower().Replace(" ",string.Empty) + ".txt");
+            SendMessage("changeExternalPath", "/"+ Char.ToLowerInvariant((books[currentBookNumber])[0]) + (books[currentBookNumber].Replace(" ", string.Empty)).Substring(1) + ".txt");
 
             changeBookButton.GetComponentInChildren<Text>().text = "Book: " + books[currentBookNumber];
         }

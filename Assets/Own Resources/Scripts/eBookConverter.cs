@@ -12,7 +12,7 @@ public class eBookConverter : MonoBehaviour{
     {
         string filePath = Application.streamingAssetsPath;
 
-        string externalPath = "/deneme.txt";
+        string externalPath = "/metamorphism.txt";
         
         changeExternalPath(filePath+externalPath);
     }

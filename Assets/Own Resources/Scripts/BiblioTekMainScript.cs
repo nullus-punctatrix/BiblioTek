@@ -31,7 +31,6 @@ public class BiblioTekMainScript : MonoBehaviour {
     void Start () {
         textColor = new Color32(50, 50, 50, 255);
         textFont = Resources.Load("ARIAL SDF", typeof(TMP_FontAsset)) as TMP_FontAsset;
-        Debug.Log("YARRAKSARMASI");
     }
 
 	void Update () {
