@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour {
 
     string[] color = { "Black","Red", "Green", "Blue" };
 
-    string[] books = { "/deneme.txt", "/aliceInWonderland.txt", "uc", "dort" };
+    string[] books = { "Deneme", "Alice In Wonderland", "uc", "dort" };
 
     //string[] type = {"Arial","Anton","Bangers","Liberation","Noto"};
 
@@ -114,6 +114,8 @@ public class UIManager : MonoBehaviour {
         changeBookButton= GameObject.Find("ChangeBook").GetComponent<Button>();
         changeBookButton.onClick.AddListener(delegate { ListenUI("changeBook"); });
         changeBookButton.GetComponentInChildren<Text>().text = "Book: " + books[currentBookNumber];
+        SendMessage("changeExternalPath", "/" + books[currentBookNumber].ToLowerInvariant().Replace(" ", string.Empty) + ".txt");
+
 
         settingsCanvas.SetActive(false);
         bookSelectionCanvas.SetActive(false);
@@ -283,7 +285,9 @@ public class UIManager : MonoBehaviour {
 
             currentBookNumber %= 2;
 
-            SendMessage("changeExternalPath", books[currentBookNumber]);
+            Debug.Log("/" + books[currentBookNumber].ToLowerInvariant().Replace(" ", string.Empty) + ".txt");
+
+            SendMessage("changeExternalPath", "/"+ books[currentBookNumber].ToLower().Replace(" ",string.Empty) + ".txt");
 
             changeBookButton.GetComponentInChildren<Text>().text = "Book: " + books[currentBookNumber];
         }
