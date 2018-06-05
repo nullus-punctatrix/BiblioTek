@@ -6,32 +6,15 @@ using System.IO;
 public class eBookConverter : MonoBehaviour{
 
     
-    	private string fullText;
-
-   
-
-    string path;
+    
 
     void Start()
     {
-        string filePath = Application.streamingAssetsPath + "/deneme.txt";
-        string jsonString;
+        string filePath = Application.streamingAssetsPath;
 
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            WWW reader = new WWW(filePath);
-            while (!reader.isDone) { }
-
-            jsonString = reader.text;
-        }
-        else
-        {
-            jsonString = File.ReadAllText(filePath);
-        }
-
-        sendFullText(jsonString);
-
-
+        string externalPath = "/deneme.txt";
+        
+        changeExternalPath(filePath+externalPath);
     }
 	
 	// Update is called once per frame
@@ -39,9 +22,27 @@ public class eBookConverter : MonoBehaviour{
         
     }
 
-	void convertBook(){
-		
-	}
+	void changeExternalPath(string externalPath){
+
+        string filePath = Application.streamingAssetsPath;
+
+        filePath = filePath + externalPath;
+        string fullText;
+
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            WWW reader = new WWW(filePath);
+            while (!reader.isDone) { }
+
+            fullText = reader.text;
+        }
+        else
+        {
+            fullText = File.ReadAllText(filePath);
+        }
+
+        sendFullText(fullText);
+    }
 
 	string readBook(){
 		return null;

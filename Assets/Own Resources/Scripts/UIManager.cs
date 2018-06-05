@@ -11,17 +11,21 @@ public class UIManager : MonoBehaviour {
 
     string[] color = { "Black","Red", "Green", "Blue" };
 
-    string[] type = {"Arial","Anton","Bangers","Liberation","Noto"};
+    string[] books = { "/deneme.txt", "/aliceInWonderland.txt", "uc", "dort" };
+
+    //string[] type = {"Arial","Anton","Bangers","Liberation","Noto"};
 
     int fontSizeCount=2;
 
     int fontColorCount = 0;
 
-    int fontTypeCount = 0;
+    //int fontTypeCount = 0;
 
     int totalPartitionNumber=0;
 
     int currentPartitionNumber = 0;
+
+    int currentBookNumber = 0;
 
     GameObject mainCanvas;
     GameObject settingsCanvas;
@@ -39,8 +43,9 @@ public class UIManager : MonoBehaviour {
     Button backInUploadButton;
     Button fontSizeButton;
     Button fontColorButton;
-    Button fontTypeButton;
+    //Button fontTypeButton;
     Button changePartitionButton;
+    Button changeBookButton;
 
     // Use this for initialization
     void Start () {
@@ -91,9 +96,9 @@ public class UIManager : MonoBehaviour {
         fontColorButton.GetComponentInChildren<Text>().text = "Font Color: " + color[fontColorCount];
 
 
-        fontTypeButton = GameObject.Find("FontType").GetComponent<Button>();
-        fontTypeButton.onClick.AddListener(delegate { ListenUI("changeFontType"); });
-        fontTypeButton.GetComponentInChildren<Text>().text = "Font Type: " + type[fontTypeCount];
+        //fontTypeButton = GameObject.Find("FontType").GetComponent<Button>();
+        //fontTypeButton.onClick.AddListener(delegate { ListenUI("changeFontType"); });
+        //fontTypeButton.GetComponentInChildren<Text>().text = "Font Type: " + type[fontTypeCount];
 
         changePartitionButton = GameObject.Find("ChangePartition").GetComponent<Button>();
         changePartitionButton.onClick.AddListener(delegate { ListenUI("changePartition"); });
@@ -105,6 +110,10 @@ public class UIManager : MonoBehaviour {
         {
             changePartitionButton.GetComponentInChildren<Text>().text = "Partition Number: " + 0;
         }
+
+        changeBookButton= GameObject.Find("ChangeBook").GetComponent<Button>();
+        changeBookButton.onClick.AddListener(delegate { ListenUI("changeBook"); });
+        changeBookButton.GetComponentInChildren<Text>().text = "Book: " + books[currentBookNumber];
 
         settingsCanvas.SetActive(false);
         bookSelectionCanvas.SetActive(false);
@@ -123,13 +132,13 @@ public class UIManager : MonoBehaviour {
         totalPartitionNumber=maxNOP;
     }
 
-	void ListenUI(string buttonName){
+    void ListenUI(string buttonName) {
 
         //Debug.Log("Basildi");
 
         if (buttonName.Equals("settings"))
         {
-           Debug.Log("Settings Buttonu Tiklandi");
+            Debug.Log("Settings Buttonu Tiklandi");
 
             mainCanvas.SetActive(false);
 
@@ -138,7 +147,7 @@ public class UIManager : MonoBehaviour {
         }
         else if (buttonName.Equals("exit"))
         {
-           // Debug.Log("Exit Buttonu Tiklandi");
+            // Debug.Log("Exit Buttonu Tiklandi");
 
             settingsCanvas.SetActive(false);
 
@@ -156,7 +165,7 @@ public class UIManager : MonoBehaviour {
         }
         else if (buttonName.Equals("uploadCanvas"))
         {
-          //  Debug.Log("Upload Buttonu Tiklandi");
+            //  Debug.Log("Upload Buttonu Tiklandi");
 
             bookSelectionCanvas.SetActive(false);
 
@@ -165,7 +174,7 @@ public class UIManager : MonoBehaviour {
         }
         else if (buttonName.Equals("link"))
         {
-           // Debug.Log("Link Buttonu Tiklandi");
+            // Debug.Log("Link Buttonu Tiklandi");
 
             uploadBookCanvas.SetActive(false);
 
@@ -185,7 +194,7 @@ public class UIManager : MonoBehaviour {
         //}
         else if (buttonName.Equals("backInBookSelect"))
         {
-           // Debug.Log("BackInBookSelect Buttonu Tiklandi");
+            // Debug.Log("BackInBookSelect Buttonu Tiklandi");
 
             bookSelectionCanvas.SetActive(false);
 
@@ -194,7 +203,7 @@ public class UIManager : MonoBehaviour {
         }
         else if (buttonName.Equals("backInUpload"))
         {
-           // Debug.Log("BackInUpload Buttonu Tiklandi");
+            // Debug.Log("BackInUpload Buttonu Tiklandi");
 
             uploadBookCanvas.SetActive(false);
 
@@ -203,7 +212,7 @@ public class UIManager : MonoBehaviour {
         }
         else if (buttonName.Equals("changeFontSize"))
         {
-           // Debug.Log("ChangeFontSize Buttonu Tiklandi");
+            // Debug.Log("ChangeFontSize Buttonu Tiklandi");
 
             fontSizeCount++;
 
@@ -211,18 +220,18 @@ public class UIManager : MonoBehaviour {
 
             SendMessage("changeMaxCharLimit", size[fontSizeCount]);
 
-			if (size [fontSizeCount] == 500) {
-				fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: XLarge";
-			}
-			else if (size [fontSizeCount] == 750) {
-				fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: Large";
-			}
-			else if (size [fontSizeCount] == 1000) {
-				fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: Medium";
-			}
-			else if (size [fontSizeCount] == 1250) {
-				fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: Small";
-			}
+            if (size[fontSizeCount] == 500) {
+                fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: XLarge";
+            }
+            else if (size[fontSizeCount] == 750) {
+                fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: Large";
+            }
+            else if (size[fontSizeCount] == 1000) {
+                fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: Medium";
+            }
+            else if (size[fontSizeCount] == 1250) {
+                fontSizeButton.GetComponentInChildren<Text>().text = "Font Size: Small";
+            }
         }
         else if (buttonName.Equals("changeFontColor"))
         {
@@ -238,20 +247,20 @@ public class UIManager : MonoBehaviour {
 
 
         }
-        else if (buttonName.Equals("changeFontType"))
-        {
-           // Debug.Log("ChangeFontType Buttonu Tiklandi");
+        //else if (buttonName.Equals("changeFontType"))
+        //{
+        //   // Debug.Log("ChangeFontType Buttonu Tiklandi");
 
-            fontTypeCount++;
+        //    fontTypeCount++;
 
-            fontTypeCount %= 5;
+        //    fontTypeCount %= 5;
 
-            SendMessage("changeTextType", type[fontTypeCount]);
+        //    SendMessage("changeTextType", type[fontTypeCount]);
 
-            fontTypeButton.GetComponentInChildren<Text>().text = "Font Color: " + type[fontTypeCount];
+        //    fontTypeButton.GetComponentInChildren<Text>().text = "Font Color: " + type[fontTypeCount];
 
 
-        }
+        //}
         else if (buttonName.Equals("changePartition"))
         {
           //  Debug.Log("ChangePartition Buttonu Tiklandi");
@@ -267,15 +276,20 @@ public class UIManager : MonoBehaviour {
                 SendMessage("receiveCurrentSegment", currentPartitionNumber);
             }
         }
+        else if (buttonName.Equals("changeBook"))
+        {
+
+            currentBookNumber++;
+
+            currentBookNumber %= 2;
+
+            SendMessage("changeExternalPath", books[currentBookNumber]);
+
+            changeBookButton.GetComponentInChildren<Text>().text = "Book: " + books[currentBookNumber];
+        }
         else
         {
            // Debug.Log("UNSUPPORTED BUTTON");
         }
-
-
-
-
-
-
 	}
 }
