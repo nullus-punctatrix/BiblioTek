@@ -186,6 +186,9 @@ public class BiblioTekMainScript : MonoBehaviour {
 				Transform textBox = (Transform)Transform.Instantiate (textPrefab);
 				textBox.transform.SetParent (canvasOb);
 				textBox.GetComponent<RectTransform> ().sizeDelta = new Vector2 (0, 0);
+				textBox.GetComponent<RectTransform> ().offsetMax = new Vector2 (30, 70);
+				textBox.GetComponent<RectTransform> ().offsetMin = new Vector2 (30, 70);
+
 
 				//			if (i + (tbs.Length * segmentPointer) < cachedPages.Length) {
 				//				textBox.GetComponent<TextMeshPro> ().text = cachedPages [i + (tbs.Length * segmentPointer)];
